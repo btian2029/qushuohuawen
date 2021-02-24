@@ -4,11 +4,10 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+   // motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-   // imageUrl:'https://cloud-minapp-38640.cloud.ifanrusercontent.com/1lETLOJyjQhJR4VE.png',
 
   },
   // 事件处理函数
@@ -17,6 +16,22 @@ Page({
       url: '../logs/logs'
     })
   }, 
+ /* tip:function(){
+    wx.showModal({
+      title: '提示',
+            content: '授权成功',
+            showCancel: false, //是否显示取消按钮-----》false去掉取消按钮
+            cancelText: "否", //默认是“取消”
+            cancelColor: 'skyblue', //取消文字的颜色
+            confirmText: "是", //默认是“确定”
+            confirmColor: 'skyblue', //确定文字的颜色
+      success: function (res) {
+        if (res.confirm) {
+         console.log(userInfo)
+       }
+      }
+    })
+  },*/
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({
@@ -45,12 +60,38 @@ Page({
       })
     }
   },
+  
   getUserInfo(e) {
+  
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
-    })
-  }
-})
+    })},
+    
+      createUser(e) { 
+        let wechatId = userInfo.openId
+        let Users = new wx.BaaS.TableObject('userInfor') //实例化对应 tableName 的数据表对象
+        let user = Users.create() // 创建一条记录
+        book.set({wechatId})
+          .save()
+          .then(() => {
+            //...
+          })
+        
+    },
+  
+  
+  createUser(e) { 
+    let wechatId = userInfo.openId
+    let Users = new wx.BaaS.TableObject('userInfor') //实例化对应 tableName 的数据表对象
+    let user = Users.create() // 创建一条记录
+    book.set({wechatId})
+      .save()
+      .then(() => {
+        //...
+      })
+    }
+  })
+  

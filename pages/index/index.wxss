@@ -20,17 +20,18 @@
   
 }
 
-button{
+.button{
   float: center;
-  font-size: 50%;
+  font-size: 14px;
   width:313rpx;
   height:65rpx;
   background-color: #7E75B3;
   color:white;
   border-radius: 50%;
   left:20;
+  border-radius:20px;
 }
-/*
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -43,6 +44,7 @@ button{
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
+  position:relative;
 }
 
 .userinfo-nickname {
@@ -58,4 +60,3 @@ button{
 .usermotto {
   margin-top: 200px;
 }
-*/
