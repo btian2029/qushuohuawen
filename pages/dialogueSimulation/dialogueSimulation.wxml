@@ -12,3 +12,87 @@
         <image src="/images/icon/event.png" style="height:60rpx;width:60rpx;margin-bottom:20rpx"></image>
     </view>
 </view>
+
+<view class="card w90 mt20 ml20 " style="">
+        <view class="font30 font-purple">热门搜索</view>
+</view>
+<!-- 搜索模块 -->
+<view class=" card f-r f-a-c boxing w90" style="">
+    <van-grid column-num="3" border="{{ false }}">
+        <van-grid-item use-slot wx:for="{{ popular_search }}" wx:for-item="item" bind:click="stick_search" >
+            <view class="blocked">
+                <view class="font-purple font25 td mt10">{{item.name}}</view>
+            </view>
+        </van-grid-item>
+    </van-grid>
+</view>
+
+<view class="card w90 mt20 ml20 mr10 mb40" style="">
+        <view class="font30 font-purple">分类</view>
+</view>
+
+<!-- 底下五个模块 -->
+<view class="container0">
+    <!-- 日常必备 -->
+    <view class="cardreset p30 f-c w100 boxing mb40" wx:for="{{fuc}}"  bindtap="dialogueSimulation" id="{{item.id}}" >
+        <view class="row f-r f-a-c f-j-s mb30">
+            <view class="f-r f-a-c" wx:for-item="{{item}}">
+                <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                <view class="f-c font29 ml40">
+                    <view>{{item.name}}</view>
+                    <view class="font27 mt5 color-grey">{{item.introduction}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>    
+
+<!-- 学习
+    <view class="cardreset p30 f-c w100 boxing mb40" bindtap="dialogueSimulation" id="{{2}}">
+        <view class="row f-r f-a-c f-j-s mb30">
+            <view class="f-r f-a-c">
+                <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                <view class="f-c font29 ml40">
+                    <view>学习</view>
+                    <view class="font27 mt5 colorhui">{{introduction}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    职场生活
+    <view class="cardreset p30 f-c w100 boxing mb40" bindtap="dialogueSimulation" id="{{3}}">
+        <view class="row f-r f-a-c f-j-s mb30">
+            <view class="f-r f-a-c">
+                <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                <view class="f-c font29 ml40">
+                    <view>职场生活</view>
+                    <view class="font27 mt5 colorhui">{{introduction}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    旅游出行
+    <view class="cardreset p30 f-c w100 boxing mb40" bindtap="dialogueSimulation" id="{{4}}">
+        <view class="row f-r f-a-c f-j-s mb30">
+            <view class="f-r f-a-c">
+                <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                <view class="f-c font29 ml40">
+                    <view>旅游出行</view>
+                    <view class="font27 mt5 colorhui">{{introduction}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    恋爱感情
+    <view class="cardreset p30 f-c w100 boxing mb40" bindtap="dialogueSimulation" id="{{5}}">
+        <view class="row f-r f-a-c f-j-s mb30">
+            <view class="f-r f-a-c">
+                <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                <view class="f-c font29 ml40">
+                    <view>恋爱感情</view>
+                    <view class="font27 mt5 colorhui">{{introduction}}</view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+

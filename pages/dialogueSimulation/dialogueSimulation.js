@@ -5,9 +5,67 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    popular_search:[
+      {name:'买菜'},
+      {name:'点餐'},
+      {name:'打招呼'},
+      {name:'买菜'},
+      {name:'点餐'},
+      {name:'打招呼'}
+    ],
+    introduction:'这是一段介绍文字',
+    fuc:[
+      { 
+        id:1,
+        name:'学习和工作',
+        introduction:'这是一段介绍文字',
+      },{
+        id:2,
+        name:'人际交往',
+        introduction:'这是一段介绍文字',
+      },{
+        id:3,
+        name:'生活',
+        introduction:'这是一段介绍文字',
+      },{
+        id:4,
+        name:'个人信息',
+        introduction:'这是一段介绍文字',
+      }
+    ]
+    
   },
-
+  //返回
+  back: function(e){
+    console.log("back2index")
+    wx.navigateBack({
+      delta: 1,
+    })
+},
+  dialogueSimulation:function(e){
+    console.log(e.currentTarget)
+    if(e.currentTarget.id ==1){
+      console.log("学习和工作")
+      wx.navigateTo({
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '学习和工作',
+    })
+    }if(e.currentTarget.id ==2){
+      console.log("人际交往")
+      wx.navigateTo({
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '人际交往',
+    })
+    }if(e.currentTarget.id ==3){
+      console.log("生活")
+      wx.navigateTo({
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '生活',
+    })
+    }if(e.currentTarget.id ==4){
+      console.log("个人信息")
+      wx.navigateTo({
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '个人信息',
+    })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

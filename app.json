@@ -9,7 +9,8 @@
     "pages/dub-tem/comic/comic",
     "pages/dub-tem/comic/monkey/monkey",
     "pages/dub-tem/comic/detail/detail",
-    "pages/dialogueSimulation/dialogueSimulation"
+    "pages/dialogueSimulation/dialogueSimulation",
+    "pages/dialogueSimulation/sort/sort"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,14 +30,14 @@
     "borderStyle": "white",
     "list": [
       {
-        "selectedIconPath": "/images/icon/icon_shouye.png",
-        "iconPath": "/images/icon/icon_shouye.png",
+        "selectedIconPath": "/images/icon/home_sel.png",
+        "iconPath": "/images/icon/home_unsel.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "/images/icon/icon_quanzi.png",
-        "iconPath": "/images/icon/icon_quanzi.png",
+        "selectedIconPath": "/images/icon/icon_quanzi_sel.png",
+        "iconPath": "/images/icon/icon_quanzi_unsel.png",
         "pagePath": "pages/moments/moments",
         "text": "圈子"
       },

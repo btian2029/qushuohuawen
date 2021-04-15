@@ -136,11 +136,11 @@ Page({
   
     //完成事件
   
-    finish(event){
-      this.setData({
-        current: this.data.inform.sentenceTotal
-      })
-    },
+    // finish(event){
+    //   this.setData({
+    //     current: this.data.inform.sentenceTotal
+    //   })
+    // },
     //再练一遍
     again() {
       this.setData({

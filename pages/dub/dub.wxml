@@ -11,13 +11,13 @@
         </view>
         <image src="/images/icon/event.png" style="height:60rpx;width:60rpx;margin-bottom:20rpx"></image>
     </view>
-
+</view>
     <!-- 声临其境 -->
-    <view class="card w90 mt20 mb40 mr20">
+    <view class="card w90 mt20 mb40 ml20">
         <view class="font50 font-purple">声临其境</view>
     </view>
     <!-- 4个选项 -->
-    <view class="f-c">
+    <view class="container f-c">
         <view class="f-r">
             <view class="boxing blk blk1 ml10" bindtap="dub" id="{{1}}" >
                 <image src="/images/icon/icon_painting.png" style="width:150rpx;height:150rpx;margin-left:30rpx;margin-top:30rpx;opacity:{{0.4}}"></image>
@@ -45,4 +45,3 @@
             </view>
         </view>
     </view>
-</view>

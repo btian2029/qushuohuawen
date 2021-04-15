@@ -16,8 +16,8 @@ Page({
     },
 
     dub: function(e){
-        console.log("comic")
-        console.log(e.currentTarget.id)
+        // console.log("comic")
+        // console.log(e.currentTarget.id)
         if(e.currentTarget.id ==1){
           console.log("comic")
           wx.navigateTo({
