@@ -1,0 +1,35 @@
+/* pages/dub/dub.wxss */
+
+  
+.search {
+    z-index: 1;
+  }
+  
+  .blk {
+      border-radius: 20rpx;
+      z-index: 1;     
+  }
+
+  .blk1 {
+    height: 320rpx;
+    width: 280rpx;
+    background: linear-gradient(to bottom right, #FB7E90, #FAA678);
+  }
+
+  .blk2 {
+    height: 320rpx;
+    width: 280rpx;
+    background: linear-gradient(to bottom right, #D5C0F9, #ABC1FA);
+  }
+
+  .blk3 {
+    height: 220rpx;
+    width: 643rpx;
+    background: linear-gradient(to bottom right, #54C8F1, #54C8F1);
+  }
+
+  .blk4 {
+    height: 220rpx;
+    width: 643rpx;
+    background: linear-gradient(to bottom right, #8EDEDF, #88EDCB);
+  }

@@ -1,0 +1,45 @@
+/* pages/dub/comic/monkeyKing/monkeyKing.wxss */
+.tab{
+    padding:5rpx 10rpx;
+    border:1px solid #BBBBBB;
+    border-radius:8rpx;
+    color:#554D84;
+    background-color:#F2F0FB;
+}
+
+.bor{
+    padding-bottom:40rpx;
+    margin-bottom:30rpx;
+    border-bottom:1px solid #D2CEEC
+}
+
+.btn{
+    width:400rpx;
+    height:80rpx;
+    text-align:center;
+    line-height:80rpx;
+    color:white;
+    background:#554D84;
+    border-radius:8rpx;
+    top:50%;
+    margin-top:-40rpx;
+    right:10rpx;
+}
+.content{
+    background-color:#F2F0FB;
+    color:#554D84;
+    line-height:2em;
+   border:1px solid #D2CEEC
+}
+
+.row{
+   background-color:#F2F0FB;
+    color:#554D84;
+    line-height:2em;
+   border:1px solid #D2CEEC  
+}
+.row-img{
+    width:100rpx;
+    height:100rpx;
+    border-radius:50%;
+}

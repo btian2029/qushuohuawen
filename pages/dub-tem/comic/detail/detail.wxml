@@ -1,0 +1,93 @@
+<video id="myVideo" style="width:100%" src="{{inform.source}}"  autoplay="" loop="false"
+	muted="false" direction="0" bindplay="" bindpause="" bindended="" bindtimeupdate="" bindwaiting="" binderror="" />
+<view class="m20 font26 font-default">
+
+	<swiper wx:if="{{current<inform.sentenceTotal}}" indicator-dots="{{false}}" autoplay="{{false}}" current="{{current}}"
+		style="height:610rpx" bindchange="swiperchange">
+		<block wx:for="{{inform.sentenceTotal+1}}" wx:key="index">
+			<swiper-item>
+				<view class="father p-r ">
+					<view class="p-r pt20">
+						<view class="p-a left-tag font20" style="top:10rpx;left:10rpx">{{index+1}}/{{inform.sentenceTotal}}</view>
+						<view class="p-a right-tag font20" style="top:10rpx;right:10rpx" bind:tap="showpinyin">拼音</view>
+						<view class="font-row f-r f-j-c f-a-c">
+							<view class="f-r f-a-c f-j-u f-w p20 pt50" style="margin:0 -20rpx">
+								<view class="f-c f-a-c mr20 ml20 mb10 font">
+									<view wx:if="{{show}}">
+										{{inform.sentenceChineseSpell[current]}}
+									</view>
+									<view>
+										{{inform.sentenceChinese[current]}}
+									</view>
+								</view>
+							</view>
+						</view>
+
+						<view class="english-row f-c f-j-c f-a-c p-r">
+							<view class="mb40">
+								Let's talk.
+							</view>
+							<view>
+								{{inform.sentenceEnglish[current]}}
+							</view>
+						</view>
+					</view>
+					<view class="btn f-r f-j-s f-a-c boxing  pl20 pr20 p-a" style="bottom:10rpx">
+						<view bindtap="play">
+						<view class="player" wx:if="{{stop}}" >
+							<image src="/images/movies/play.png" style="width:60rpx;height:60rpx;" />
+						</view>
+						<view class="player" wx:elif="{{!stop}}"  > 
+							<image src="/images/movies/stop.png" style="width:60rpx;height:60rpx;margin-left:85rpx"/>
+						</view>
+					   </view>
+						<view class="f-r f-a-c">
+							<view class="btn-tag mr10" bindtap="low_speed">慢</view>
+							<view class="btn-tag mr10" bindtap="origin_speed">原</view>
+							<view class="btn-tag" bindtap="fast_speed">快</view>
+						</view>
+					</view>
+
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
+
+<!-- <image src="/images/icon/record_icon.png" style="width:60rpx;height:60rpx"></image> -->
+	<view class="p-r f-r f-j-c mt20" wx:if="{{current<inform.sentenceTotal}}">
+		<view class="f-r mr20" >
+            <view class="bott-btn font20" bindlongpress='touchdown'  bindtouchend="touchup">{{record_name}}</view>
+		<view class="bott-btn font20" bindtap="btn_play">播放录音</view>
+		<view class="bott-btn font20" bindtap="btn_save">上传录音</view>
+		<view class="bott-btn font20" bindtap="btn_remove">清除录音</view>
+		</view>
+		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{current+1<inform.sentenceTotal}}" bindtap="finish">
+			<view>
+				完成
+			</view>
+			<view>
+				{{current+1}}/{{inform.sentenceTotal}}
+			</view>
+		</view>
+
+		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:100rpx;" wx:if="{{current+1==inform.sentenceTotal+1}}">
+			<view>
+				预览
+			</view>
+		</view>
+	</view>
+
+
+	<view wx:if="{{current==inform.sentenceTotal}}" class="stop p20 t-c">
+		<view class="font30 font-w600">你被评为</view>
+		<view class="font35 font-w600 m40">配音达人</view>
+		<view class="font-w600 pl100 pr100">一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话</view>
+		<view class="mt40 stop-btn" bindtap="look">查看配音内容</view>
+		<view class="mt40 stop-btn" bindtap="share">分享其他平台</view>
+	</view>
+
+	<view class="p20 f-r f-a-c  f-j-s" wx:if="{{current==inform.sentenceTotal}}">
+		<view class="one-btn-left" bindtap="again">再练一遍</view>
+		<view class="one-btn-right" bindtap="submit">发布</view>
+	</view>
+</view>

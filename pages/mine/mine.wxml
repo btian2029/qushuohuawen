@@ -1,0 +1,7 @@
+<!--pages/mine/mine.wxml-->
+<text>pages/mine/mine.wxml</text>
+
+<!-- <import src='/custom-tab-bar/index.wxml' />
+<view>
+  <include src="/custom-tab-bar/index.wxml" />
+</view> -->

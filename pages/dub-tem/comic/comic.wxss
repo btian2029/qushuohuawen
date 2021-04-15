@@ -1,0 +1,13 @@
+/* pages/dub-tem/comic/comic.wxss */
+
+.comic_block {
+    width: 500rpx;
+    height: 70rpx;
+    background-color: #fff;
+  }
+  
+  .button {
+    color: #ffffff;
+    height: 50rpx;
+    background-color: #554D84;
+  }

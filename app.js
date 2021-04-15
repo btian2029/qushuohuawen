@@ -1,6 +1,9 @@
 // app.js
 App({
-  onLaunch() {
+  onLaunch:function () {
+    // this.hidetabbar();
+    // this.getSystemInfo();
+  
     // 展示本地存储能力
     wx.BaaS = requirePlugin('sdkPlugin')
     const logs = wx.getStorageSync('logs') || []
@@ -29,7 +32,7 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+              console.log(res.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -41,6 +44,26 @@ App({
       }
     })
   },
+  // onShow: function () {
+
+  // },
+  // hidetabbar() {
+  //   wx.hideTabBar({
+  //     fail: function() {
+  //       setTimeout(function() { // 做了个延时重试一次，作为保底。
+  //         wx.hideTabBar()
+  //       }, 500)
+  //     }
+  //   });
+  // },
+// getSystemInfo: function() {
+//     let t = this;
+//     wx.getSystemInfo({
+//       success: function(res) {
+//         t.globalData.systemInfo = res;
+//       }
+//     });
+//   },
   globalData: {
     userInfo: null
   }

@@ -1,0 +1,58 @@
+<video
+ style="width:100%"
+ src="{{info.source}}"
+ initial-time="0"
+ autoplay=""
+ loop="false"
+ muted="false"
+ direction="0"
+ bindplay=""
+ bindpause=""
+ bindended=""
+ bindtimeupdate=""
+ bindwaiting=""
+ binderror=""
+/>
+<view class="font24 p10 bor p-r">
+	<view class="f-r">
+		<view class="font-default">{{info.created_by}}</view>
+		<view class="font-default-shallow">上传</view>
+	</view>
+	<view class="font-default-shallow mb10 mt10">
+		已有99人参与
+	</view>
+	<view class="f-r ">
+		<view class="mr10 tab">{{info.level}}</view>
+		<view class="tab">{{info.length}}</view>
+	</view>
+
+	<view class="btn p-a" bind:tap="jump">
+		去演出
+	</view>
+</view>
+
+<view class="pb50 pl20 pr20 font26 bor">
+	<view class="pb20 font28">
+		故事简介
+	</view>
+	<view class="pt10 pb10 pl20 pr20 content pb20 mb10">
+		{{info.intro}}
+	</view>
+</view>
+
+<view class="pb50 pl20 pr20 font26">
+	<view class="pb20 font28 f-c">
+		圈内评价
+	</view>
+
+	<view class="row mb20 f-r font26 f-a-c" wx:for="{{9}}">
+		<image class="row-img m10" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3741733804,1966033566&fm=26&gp=0.jpg" />
+		<view class="f-c">
+			<view class="">用户12123</view>
+			<view class="">11-28</view>
+			<view class="">非常适合新手练习</view>
+		</view>
+	</view>
+
+</view>
+

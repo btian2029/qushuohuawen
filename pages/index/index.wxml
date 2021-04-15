@@ -1,53 +1,39 @@
+<!--pages/index/index.wxml-->
 <!--index.wxml-->
 
 <view class="container">
-  <view class="userinfo">
-    <!-- 没有用户信息记录（新用户）需要进行授权 -->
-  <block wx:if="{{!hasUserInfo && canIUse}}" >
-    <image class="image"
-    src="https://cloud-minapp-38640.cloud.ifanrusercontent.com/1lETLOJyjQhJR4VE.png"
-    background-size="cover"></image>
-   
+  <!-- 搜索框 -->
+      <view class=" card f-r f-a-c boxing w90">
+        <image src="/images/icon/icon_mail.png" style="height:70rpx;width:70rpx;margin-bottom:20rpx"></image>
+        <view class="boxing block ml20 mb20 mr20 f-r">
+            <image src="/images/icon/icon_search.png" style="height:40rpx;width:40rpx;margin-top:16rpx;margin-bottom:20rpx;margin-left:180rpx"></image>
+          <view class="font-purple font30" style="margin-top:16rpx;margin-bottom:20rpx">搜索</view>
+        </view>
+        <image src="/images/icon/event.png" style="height:60rpx;width:60rpx;margin-bottom:20rpx"></image>
+      </view>
 
-    <text class='title'>趣说华文轻松学中文</text>
-
-    <!-- 授权按钮 -->
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"
-     class ="button"
-     type="button"  style=" left: -1rpx; top: 381rpx"
-     open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo"
-     bindtap="createUser"
-     >一键微信登录</button> 
-     </block>
-
-     <!-- 如果存在登录记录 -->
-     <block wx:else>
-
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" style="width: 268rpx; height: 272rpx; display: block; box-sizing: border-box; position: relative; left: -1rpx; top: -90rpx" position="relative"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <button class="button" style=" left: -1rpx; top: 381rpx"
-      bindtap="bindViewTap"
-     
-      >进入首页</button>
+  <!-- 轮播图 -->
+  <swiper class = "sw" style = "height:{{imgheights[current]}}px" autoplay="true" interval="5000" duration="500" circular="true" bindchange='bindchange'>
+    <block wx:for="{{Carousel}}" >
+      <swiper-item>
+        <image src="{{item.url}}" style="height:400rpx;" bindload="imgload"></image>
+      </swiper-item>
     </block>
-   
-    </view>
-<!--
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 一键微信登录 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  </swiper>
 
-  <view class="image">
-    <image class="image" src="{{image.imageUrl}}" mode="cover"></image>
+  <!-- 功能 -->
+  <view class="" style="">
+    <block wx:for="{{func}}">
+      <button class="button mt40 " style="width:680rpx" id="{{item.id}}" bindtap="switch_function">{{item.name}}</button>
+    </block>
+  </view> 
+  <!-- 一个小图标 -->
+  <view class="Capture">
+    <image src="/images/icon/Capture.png" style="width:150rpx;height:250rpx" ></image>
   </view>
-  -->
 </view>
 
-
+<!-- <import src='/custom-tab-bar/index.wxml' />
+<view>
+  <include src="/custom-tab-bar/index.wxml" />
+</view> -->
