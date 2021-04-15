@@ -1,1 +1,30 @@
 /* pages/dialogueSimulation/sort/sort.wxss */
+.container0 {
+  box-sizing: border-box;
+}
+
+.cardreset{
+  background-color: #F2F0FB;
+  width: 90%;
+  /* height: 150rpx; */
+  border-radius: 20rpx;
+  display: flex;
+  margin-left: 5%;
+  /* align-items: center; */
+}
+
+.practice{
+  margin: auto;
+  margin-right: 4%;
+}
+
+.button {
+  color: #ffffff;
+  height: 50rpx;
+  background-color: #554D84;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

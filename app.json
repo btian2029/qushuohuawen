@@ -10,7 +10,8 @@
     "pages/dub-tem/comic/monkey/monkey",
     "pages/dub-tem/comic/detail/detail",
     "pages/dialogueSimulation/dialogueSimulation",
-    "pages/dialogueSimulation/sort/sort"
+    "pages/dialogueSimulation/sort/sort",
+    "pages/dialogueSimulation/practice/practice"
   ],
   "window": {
     "backgroundTextStyle": "light",

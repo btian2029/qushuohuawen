@@ -1,2 +1,39 @@
 <!--pages/dialogueSimulation/sort/sort.wxml-->
-<text>pages/dialogueSimulation/sort/sort.wxml</text>
+<!-- 弹出层样式 -->
+<van-popup
+  show="{{ show }}"
+  position="top"
+  bind:close="onClose"
+  round
+  closeable
+>
+<view class="container0 mt20 mb40 f-c">
+  <view class="container" >请选择模式</view>
+  <view class="f-r mt40">
+    <view class="button" style="width:20%;margin-left:20%"  bindtap="practice" id="{{1}}">
+      <view class="font27">练习</view>
+    </view>
+    <view class="button practice" style="width:20%;margin-right:20%"  bindtap="practice" id="{{2}}">
+      <view class="font27">模拟</view>
+    </view>
+  </view>
+</view>
+
+</van-popup>
+<!-- 内容 -->
+<view class="container0">
+    <view class="card p30 w100 f-c boxing mb40 mt20" wx:for="{{talk}}"   id="{{item.id}}" bindtap="sort">
+            <view class="f-c ">
+                <view class="f-r mb20" style="margin-left:4%" wx:for-item="{{item}}" >
+                    <view class="font29" >{{item.topic}}</view>
+                    <view class="practice f-r">
+                      <view class="font-purple ">开始练习</view>
+                      <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                  </view>
+                </view>
+                <view class="cardreset " style="">
+                 <view class="font27 mt5 color-grey">{{item.introduction}}</view>
+                </view>
+            </view>
+    </view>
+</view>    

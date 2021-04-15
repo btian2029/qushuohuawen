@@ -5,8 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //接收数组 
     talk:'',
     num:'',
+    //是否弹出遮罩层
+    show:false,
+    id:'',
+  },
+  //关闭弹出层
+  onClose() {
+    this.setData({ show: false });
+  },
+
+  sort:function(e){
+    this.setData({
+      id:e.currentTarget.id
+    })
+    this.setData({
+      show:true
+    })
+    console.log(e.currentTarget)
+    console.log("switch")
+      // wx.navigateTo({
+      //   url: 'practice/practice?recordID=' + e.currentTarget.id
+      // })
+  },
+
+  practice:function(e){
+    var that = this;
+    console.log("选取id",e.currentTarget)
+    if(e.currentTarget.id == 1){
+      console.log("练习id",that.data.id)
+      wx.navigateTo({
+          url: '../practice/practice?recordID=' + that.data.id
+      })
+    }else{
+      wx.showToast({
+        title: '功能完善中',
+        icon:'none',
+        duration:1000
+      })
+    }
   },
 
   /**
@@ -14,6 +53,8 @@ Page({
    */
   onLoad: function (options) {
     var type = options.type;
+    //修改导航栏标题
+    wx.setNavigationBarTitle({ title: options.type })
     let tableName = 'talk_material'
     let query = new wx.BaaS.Query()
     query.contains('type',type)

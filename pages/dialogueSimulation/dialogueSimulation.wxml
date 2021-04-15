@@ -1,6 +1,6 @@
 <!--pages/dialogueSimulation/dialogueSimulation.wxml-->
 <!-- 搜索框 -->
-<view class="container" style="margin-top:150rpx">
+<view class="container" style="margin-top:0rpx">
     <view class=" card f-r f-a-c boxing w90">
         <view bindtap="back">
             <image src="/images/icon/icon_back.svg" style="height:70rpx;width:70rpx;margin-bottom:20rpx"></image>
@@ -33,11 +33,10 @@
 
 <!-- 底下五个模块 -->
 <view class="container0">
-    <!-- 日常必备 -->
-    <view class="cardreset p30 f-c w100 boxing mb40" wx:for="{{fuc}}"  bindtap="dialogueSimulation" id="{{item.id}}" >
+    <view class="cardreset p30 w100 boxing mb40" wx:for="{{fuc}}"  bindtap="dialogueSimulation" id="{{item.id}}" >
         <view class="row f-r f-a-c f-j-s mb30">
             <view class="f-r f-a-c" wx:for-item="{{item}}">
-                <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
+                <image src="/images/Carousel/Carousel_1.png" style="height:80rpx;width:80rpx"></image>
                 <view class="f-c font29 ml40">
                     <view>{{item.name}}</view>
                     <view class="font27 mt5 color-grey">{{item.introduction}}</view>
