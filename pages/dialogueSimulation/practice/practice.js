@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show_select:'',
+    materialId:'',
 
   },
 
@@ -12,7 +14,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var topic = options.topic;
+    wx.setNavigationBarTitle({ title: options.topic })
+    let show_select = options.show_select;
+    let recordID  = options.recordID;
+    that.setData({
+      show_select: show_select
+    })
+    that.setData({
+      materialId: recordID
+    })
+    console.log(that.data.show_select)
+    console.log(that.data.materialId)
   },
 
   /**

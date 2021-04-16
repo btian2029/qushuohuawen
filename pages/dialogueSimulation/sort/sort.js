@@ -10,7 +10,9 @@ Page({
     num:'',
     //是否弹出遮罩层
     show:false,
+    //音频片段id
     id:'',
+    topic:'',
   },
   //关闭弹出层
   onClose() {
@@ -22,30 +24,28 @@ Page({
       id:e.currentTarget.id
     })
     this.setData({
+      topic:e.currentTarget.dataset.topic
+    })
+    this.setData({
       show:true
     })
     console.log(e.currentTarget)
+    console.log(this.data.topic)
     console.log("switch")
       // wx.navigateTo({
       //   url: 'practice/practice?recordID=' + e.currentTarget.id
       // })
   },
 
+   //popup 之后的选择，模拟或者练习
   practice:function(e){
     var that = this;
     console.log("选取id",e.currentTarget)
-    if(e.currentTarget.id == 1){
-      console.log("练习id",that.data.id)
-      wx.navigateTo({
-          url: '../practice/practice?recordID=' + that.data.id
-      })
-    }else{
-      wx.showToast({
-        title: '功能完善中',
-        icon:'none',
-        duration:1000
-      })
-    }
+    console.log("练习片段id",that.data.id)
+    console.log(typeof(that.data.showmodel))
+    wx.navigateTo({
+      url: '../practice/practice?recordID=' + that.data.id + '&show_select=' + e.currentTarget.id + '&topic=' + that.data.topic
+    })
   },
 
   /**

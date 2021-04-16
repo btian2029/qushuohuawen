@@ -1,2 +1,7 @@
 <!--pages/dialogueSimulation/practice/practice.wxml-->
-<text>pages/dialogueSimulation/practice/practice.wxml</text>
+<view class="container" wx:if="{{show_select==1}}">
+<text>练习</text>
+</view>
+<view class="container" wx:if="{{show_select==2}}">
+<text>模拟</text>
+</view>

@@ -22,7 +22,7 @@
 </van-popup>
 <!-- 内容 -->
 <view class="container0">
-    <view class="card p30 w100 f-c boxing mb40 mt20" wx:for="{{talk}}"   id="{{item.id}}" bindtap="sort">
+    <view class="card p30 w100 f-c boxing mb40 mt20" wx:for="{{talk}}"   id="{{item.id}}" data-topic="{{item.topic}}" bindtap="sort">
             <view class="f-c ">
                 <view class="f-r mb20" style="margin-left:4%" wx:for-item="{{item}}" >
                     <view class="font29" >{{item.topic}}</view>
