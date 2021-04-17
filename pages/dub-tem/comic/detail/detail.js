@@ -27,7 +27,7 @@ Page({
       // isSpeaking: false,//是否正在说话  
       // voices: [], //音频数组  
       // 默认按住录音
-      record_name: "长按开始录制",
+      record_name: "长按录音",
       start_time: "",
       // 录制最终时间
       speck_time: 0,
@@ -288,8 +288,16 @@ Page({
     //   console.log("播放失败",res.errMsg)
     //   console.log(res.errCode)
     // })
+    if(this.data.record_permission == false){
     innerAudioContext.src = this.data.tmpfile
     innerAudioContext.play()
+    }else{
+      wx.showToast({
+        title: '请录音后重试',
+        icon:'none',
+        duration:1000
+      })
+    }
   },
 // 重新录制
 btn_remove: function () {

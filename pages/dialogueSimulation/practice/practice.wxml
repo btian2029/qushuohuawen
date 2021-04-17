@@ -1,7 +1,66 @@
 <!--pages/dialogueSimulation/practice/practice.wxml-->
-<view class="container" wx:if="{{show_select==1}}">
-<text>练习</text>
+<!-- 练习模块 -->
+<view class="" wx:if="{{show_select==1}}">
+<view class="m20 font26 font-default" style="margin-top:50rpx">
+
+<swiper wx:if="{{current<sentenceTotal}}" indicator-dots="{{false}}" autoplay="{{false}}" current="{{current}} "
+  style="height:610rpx" bindchange="swiperchange">
+  <block wx:for="{{sentenceTotal}}" wx:key="index">
+    <swiper-item>
+      <view class="father p-r ">
+        <view class="p-r pt20">
+          <view class="p-a left-tag font20" style="top:10rpx;right:10rpx">{{index+1}}/{{sentenceTotal}}</view>
+          <view class="f-c f-j-c f-a-c" style="">
+            <image src="/images/Carousel/Carousel_1.png" style="height:150rpx; width:150rpx; border-radius:50%"></image>
+            <view class="f-r f-a-c f-j-u f-w p20 pt25 pt20" style="margin:0 -20rpx">
+              <view class="f-c f-a-c mr20 ml20 mb10 font">
+                <view wx:if="{{show}}">
+                  {{inform.recordA_txt[sentenceIndex]}}
+                </view>
+                <view wx:if="{{!show}}">
+                  {{inform.recordB_txt[sentenceIndex]}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="btn f-r f-j-s f-a-c boxing  pl20 pr20 p-a" style="bottom:20rpx">
+          <image src="/images/movies/play.png" bindtap="btn_play" style="height:50rpx;width:50rpx"></image>
+          <view class="bott-btn font20" bindlongpress='touchdown'  bindtouchend="touchup">{{record_name}}</view>
+          <image src="/images/icon/clear.png" bindtap="btn_remove" style="width:50rpx;height:50rpx"></image>
+        </view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- <image src="/images/icon/record_icon.png" style="width:60rpx;height:60rpx"></image> -->
+<view class="p-r f-r f-j-c mt20" wx:if="{{current< sentenceTotal}}">
+  <view class="f-r mr20" >
+          <view class="bott-btn font20" bindlongpress='touchdown'  bindtouchend="touchup">{{record_name}}</view>
+  <view class="bott-btn font20" bindtap="btn_play">播放录音</view>
+  <view class="bott-btn font20" bindtap="btn_save">上传录音</view>
+  <view class="bott-btn font20" bindtap="btn_remove">清除录音</view>
+  </view>
+  <view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{current+1 < sentenceTotal}}" bindtap="finish">
+    <view>
+      完成
+    </view>
+    <view>
+      {{flag}}/{{sentenceTotal}}
+    </view>
+  </view>
+
+  <view class="bott-right p-r f-c f-a-c f-j-c" style="left:100rpx;" wx:if="{{current+1 == sentenceTotal}}">
+    <view>
+      预览
+    </view>
+  </view>
 </view>
+
+</view>
+</view>
+<!-- 模拟模块 -->
 <view class="container" wx:if="{{show_select==2}}">
 <text>模拟</text>
 </view>

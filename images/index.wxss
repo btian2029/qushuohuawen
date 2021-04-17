@@ -449,6 +449,10 @@
 .m40{
     margin: 40rpx
 }
+
+.pt25{
+    padding-top: 25rpx;
+}
 .pt50{
     padding-top: 50rpx
 }

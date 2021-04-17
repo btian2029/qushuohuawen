@@ -7,11 +7,13 @@ Page({
   data: {
     //接收数组 
     talk:'',
+    // 材料数量
     num:'',
     //是否弹出遮罩层
     show:false,
     //音频片段id
     id:'',
+    // 用于给下一个页面传输标题
     topic:'',
   },
   //关闭弹出层
@@ -19,6 +21,7 @@ Page({
     this.setData({ show: false });
   },
 
+  // 这个是选择某一个材料
   sort:function(e){
     this.setData({
       id:e.currentTarget.id
@@ -32,9 +35,6 @@ Page({
     console.log(e.currentTarget)
     console.log(this.data.topic)
     console.log("switch")
-      // wx.navigateTo({
-      //   url: 'practice/practice?recordID=' + e.currentTarget.id
-      // })
   },
 
    //popup 之后的选择，模拟或者练习
@@ -55,6 +55,7 @@ Page({
     var type = options.type;
     //修改导航栏标题
     wx.setNavigationBarTitle({ title: options.type })
+    // 获取数据部分
     let tableName = 'talk_material'
     let query = new wx.BaaS.Query()
     query.contains('type',type)
@@ -69,6 +70,7 @@ Page({
       // err
       console.log("find_err")
     })
+    // 查询数量
     talk.setQuery(query).count().then(num => {
       // success
       console.log(num) // 10

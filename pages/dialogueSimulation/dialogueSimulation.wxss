@@ -20,6 +20,8 @@
   width: 80%;
   height: 150rpx;
   border-radius: 20rpx;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .td{

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //热门搜索
     popular_search:[
       {name:'买菜'},
       {name:'点餐'},
@@ -14,6 +15,7 @@ Page({
       {name:'打招呼'}
     ],
     introduction:'这是一段介绍文字',
+    //功能
     fuc:[
       { 
         id:1,
@@ -42,6 +44,7 @@ Page({
       delta: 1,
     })
 },
+ //功能选择部分，四个功能
   dialogueSimulation:function(e){
     console.log(e.currentTarget)
     if(e.currentTarget.id ==1){

@@ -31,10 +31,10 @@
         <view class="font30 font-purple">分类</view>
 </view>
 
-<!-- 底下五个模块 -->
+<!-- 底下四个模块 -->
 <view class="container0">
     <view class="cardreset p30 w100 boxing mb40" wx:for="{{fuc}}"  bindtap="dialogueSimulation" id="{{item.id}}" >
-        <view class="row f-r f-a-c f-j-s mb30">
+        <view class="row f-r f-a-c f-j-s mb30" style="margin-top:20rpx">
             <view class="f-r f-a-c" wx:for-item="{{item}}">
                 <image src="/images/Carousel/Carousel_1.png" style="height:80rpx;width:80rpx"></image>
                 <view class="f-c font29 ml40">

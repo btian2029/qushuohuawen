@@ -61,7 +61,7 @@
 		<view class="bott-btn font20" bindtap="btn_save">上传录音</view>
 		<view class="bott-btn font20" bindtap="btn_remove">清除录音</view>
 		</view>
-		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{current+1<inform.sentenceTotal}}" bindtap="finish">
+		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{flag<inform.sentenceTotal}}" bindtap="finish">
 			<view>
 				完成
 			</view>
@@ -70,7 +70,7 @@
 			</view>
 		</view>
 
-		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:100rpx;" wx:if="{{current+1==inform.sentenceTotal+1}}">
+		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{current+1==inform.sentenceTotal}}">
 			<view>
 				预览
 			</view>
