@@ -1,6 +1,6 @@
 <!--pages/dub/dub.wxml-->
 <!-- 搜索框 -->
-<view class="container" style="margin-top:150rpx">
+<!-- <view class="container" style="margin-top:150rpx">
     <view class=" card f-r f-a-c boxing w90">
         <view bindtap="back">
             <image src="/images/icon/icon_back.svg" style="height:70rpx;width:70rpx;margin-bottom:20rpx"></image>
@@ -11,7 +11,7 @@
         </view>
         <image src="/images/icon/event.png" style="height:60rpx;width:60rpx;margin-bottom:20rpx"></image>
     </view>
-</view>
+</view> -->
     <!-- 声临其境 -->
     <view class="card w90 mt20 mb40 ml20">
         <view class="font50 font-purple">声临其境</view>
@@ -39,7 +39,7 @@
 
             <view class="f-r">
                 <view class="boxing blk blk4 mt20 " bindtap="dub" id="{{4}}">
-                   <view class="font-white font50 font-w-b mt10" style="margin-left:400rpx;">多彩中国</view> 
+                   <view class="font-white font50 font-w-b mt10" style="margin-left:400rpx;">纪录片</view> 
                    <image src="/images/icon/icon_round.png" style="width:250rpx;height:130rpx;margin-left:80rpx;opacity:{{0.4}}"></image> 
                 </view>
             </view>

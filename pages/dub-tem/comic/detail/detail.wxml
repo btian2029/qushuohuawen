@@ -1,5 +1,5 @@
-<video id="myVideo" style="width:100%" src="{{inform.source}}"  autoplay="" loop="false"
-	muted="false" direction="0" bindplay="" bindpause="" bindended="" bindtimeupdate="" bindwaiting="" binderror="" />
+<video id="myVideo" style="width:100%" src="{{inform.source}}"  autoplay="" loop="{{false}}"
+	muted="{{false}}" direction="0" bindplay="" bindpause="" bindended="" bindtimeupdate="" bindwaiting="" binderror="" />
 <view class="m20 font26 font-default">
 
 	<swiper wx:if="{{current<inform.sentenceTotal}}" indicator-dots="{{false}}" autoplay="{{false}}" current="{{current}}"
@@ -56,12 +56,12 @@
 <!-- <image src="/images/icon/record_icon.png" style="width:60rpx;height:60rpx"></image> -->
 	<view class="p-r f-r f-j-c mt20" wx:if="{{current<inform.sentenceTotal}}">
 		<view class="f-r mr20" >
-            <view class="bott-btn font20" bindlongpress='touchdown'  bindtouchend="touchup">{{record_name}}</view>
-		<view class="bott-btn font20" bindtap="btn_play">播放录音</view>
-		<view class="bott-btn font20" bindtap="btn_save">上传录音</view>
-		<view class="bott-btn font20" bindtap="btn_remove">清除录音</view>
+            <view class="bott-btn font20 mr20" bindlongpress='touchdown'  bindtouchend="touchup">{{record_name}}</view>
+		<view class="bott-btn font20 mr20" bindtap="btn_play">播放录音</view>
+		<!-- <view class="bott-btn font20" bindtap="btn_save">上传录音</view> -->
+		<view class="bott-btn font20 mr20" bindtap="btn_remove">清除录音</view>
 		</view>
-		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{flag<inform.sentenceTotal}}" bindtap="finish">
+		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{flag+1<inform.sentenceTotal}}" >
 			<view>
 				完成
 			</view>
@@ -70,7 +70,7 @@
 			</view>
 		</view>
 
-		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{current+1==inform.sentenceTotal}}">
+		<view class="bott-right p-r f-c f-a-c f-j-c" style="left:50rpx;" wx:if="{{flag==inform.sentenceTotal}}" bindtap="finish"> 
 			<view>
 				预览
 			</view>
@@ -82,12 +82,12 @@
 		<view class="font30 font-w600">你被评为</view>
 		<view class="font35 font-w600 m40">配音达人</view>
 		<view class="font-w600 pl100 pr100">一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话</view>
-		<view class="mt40 stop-btn" bindtap="look">查看配音内容</view>
-		<view class="mt40 stop-btn" bindtap="share">分享其他平台</view>
+		<view class="mt40 stop-btn" bindtap="look">查看评分详情</view>
+		<view class="mt40 stop-btn" bindtap="share">分享我的配音</view>
 	</view>
 
 	<view class="p20 f-r f-a-c  f-j-s" wx:if="{{current==inform.sentenceTotal}}">
 		<view class="one-btn-left" bindtap="again">再练一遍</view>
-		<view class="one-btn-right" bindtap="submit">发布</view>
+		<view class="one-btn-right" bindtap="back2index">返回</view>
 	</view>
 </view>

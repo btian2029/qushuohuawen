@@ -38,7 +38,9 @@ Page({
       stop:true,
       current: 0,
       // 全部录音完成标志
-      flag:0
+      flag:0,
+      //上传后数据id
+      newDataId:"",
     },
 
   
@@ -49,7 +51,7 @@ Page({
       })
     },
 
-    //播放与否
+    //播放与否，循环播放
     play(){
       this.setData({
         stop:!this.data.stop
@@ -71,33 +73,26 @@ Page({
       this.setData({
         current: event.detail.current
       })
-      this.setData({
+      console.log("current",that.current)
+      //最后一页不管
+      if(that.current < that.inform.sentenceTotal){
+        this.setData({
         initial: that.inform.time[that.current]
       })
+      //找到电影播放位置
       this.videoContext.seek(parseInt(that.initial))
       console.log('existing file',that.record,that.record[that.current])
       if(that.record[that.current] == undefined){
         this.setData({
           record_permission: true
         })
-      if (that.current == 0 ){  
-        if(that.remove_file[0] == undefined){
-          wx.showToast({
-            title: '请先上传后再录制下一句噢',
-            icon:'none',
-            duration:1000
-          })
-        }
-      }else{
-          if(that.remove_file[that.current] == undefined){
-            wx.showToast({
-              title: '请先上传后再录制下一句噢',
-              icon:'none',
-              duration:1000
-            })
-        } 
+      }else if(that.record[that.current] !== undefined){
+        this.setData({
+          record_permission: false
+        }) 
       }
-      }
+    }
+      console.log("record_permission",that.record_permission)
       // console.log(that.current)
       // console.log(that.initial)
     },
@@ -136,16 +131,32 @@ Page({
   
     //完成事件
   
-    // finish(event){
-    //   this.setData({
-    //     current: this.data.inform.sentenceTotal
-    //   })
-    // },
+    finish(event){
+      this.setData({
+        current: this.data.inform.sentenceTotal
+      })
+    },
     //再练一遍
     again() {
       this.setData({
         current: 0
       })
+      this.setData({
+        flag: 0
+      })
+      this.setData({
+        record_permission: true
+      })
+      this.data.remove_file.splice(0,this.data.remove_file.length - 1)
+      this.data.record.splice(0,this.data.record.length - 1)
+      this.setData({
+        remove_file:this.data.remove_file
+      })
+      this.setData({
+        record:this.data.record
+      })
+      console.log("remove_file",this.data.remove_file)
+      console.log("record",this.data.record)
     },
   
     //发布
@@ -162,7 +173,43 @@ Page({
     look() {
       console.log('查看配音内容');
     },
-
+    //开始录音的时候
+  start: function () {
+    const options = {
+      duration: 60000, //指定录音的时长，单位 ms
+      sampleRate: 16000, //采样率
+      numberOfChannels: 1, //录音通道数
+      encodeBitRate: 96000, //编码码率
+      format: 'mp3', //音频格式，有效值 aac/mp3
+      frameSize: 50, //指定帧大小，单位 KB
+    }
+    //开始录音
+    recorderManager.start(options);
+    recorderManager.onStart(() => {
+      console.log('recorder start')
+    });
+    //错误回调
+    recorderManager.onError((res) => {
+      console.log(res);
+    })
+  },
+    //停止录音
+  // stop: function () {
+  //   var that = this
+  //   // var formFilePath =[];
+  //   recorderManager.stop();   
+  //   recorderManager.onStop((res) => {
+  //     that.setData({
+  //       tmpfile:res.tempFilePath
+  //     })
+      // that.data.formFile[that.data.current] = res.tempFilePath;
+      // that.setData({
+      //   formFile: that.data.formFile
+      // })
+      // console.log('停止录音', res.tempFilePath)
+      // console.log('tempfile',that.data.tmpfile)
+  //   })
+  // },
     //手指按下  
   touchdown: function (e) {
     var that = this;
@@ -194,7 +241,12 @@ Page({
               } else {
                 clearInterval(that.data.setInter);
                 // 获取到结束时间
-                that.stop();
+                recorderManager.stop();   
+                recorderManager.onStop((res) => {
+                  that.setData({
+                    tmpfile:res.tempFilePath
+                  })
+                
                 that.setData({
                   record_permission: false,
                 })
@@ -203,6 +255,7 @@ Page({
                   duration: 2000,
                   icon: "none"
                 })
+              })
               }
             }, 1000);
         }else{
@@ -224,23 +277,112 @@ Page({
     console.log("手指抬起", that.data.speck_time)
     clearInterval(that.data.setInter);
     // 获取到结束时间
-    that.stop();
+    recorderManager.stop();   
+    recorderManager.onStop((res) => {
+      that.setData({
+          tmpfile:res.tempFilePath
+      })
+    })
     if (that.data.speck_time > 3) {
       //清除计时器  即清除setInter
       clearInterval(that.data.setInter);
       // 获取到结束时间
-      that.stop();
+      recorderManager.stop();   
+      recorderManager.onStop((res) => {
+        that.setData({
+          tmpfile:res.tempFilePath
+        })
+      
       that.setData({
         record_permission: false,
         // isSpeaking: false,
         record_name: "长按开始录制",
         speck_time: "0"
       })
+      let tableName = 'cartoon_trace'
+      let addRecord = new wx.BaaS.TableObject(tableName)
+      let add_record = addRecord.create()
+      let MyFile = new wx.BaaS.File();
+      console.log('tempfile',that.data.tmpfile)
+      let fileParams = {filePath: that.data.tmpfile}
+      if(that.data.record[that.data.current] == undefined){
+      let uploadTask =  MyFile.upload(fileParams)
+          // 文件成功上传的回调
+      uploadTask.then(res=>{
+          console.log('status',res.data)
+            // 获得文件的id和path
+          that.data.remove_file[that.data.current] = res.data.file.id
+          this.setData({
+            remove_file: that.data.remove_file
+          })
+          console.log('remove_file',that.data.remove_file)
+    
+          that.data.record[that.data.current] = res.data.path
+          that.setData({
+            record:that.data.record
+          })
+          console.log('record',that.data.record)
+          // that.setData({
+          //   start_time:res.data.created_at
+          // })
+          wx.showToast({
+            title: '上传成功',
+            icon: "none",
+            duration: 2000
+          })
+          //录音是否完成的标志
+          that.data.flag = that.data.flag + 1
+          this.setData({
+            flag:that.data.flag
+          })
+          if(that.data.flag == that.data.inform.sentenceTotal){
+            //当全部录音完后上传至数据库
+            let startTime = ((new Date()).toISOString()).toString()
+            add_record.set('userId',app.globalData.userInfo.nickName)
+            add_record.set('startTime',startTime)
+            add_record.set('record',that.data.record)
+            add_record.set('materialId',that.data.materialId)
+            add_record.save().then(res => {
+              console.log(res)
+              that.setData({
+                newDataId: res.data.id
+              })
+            }).catch(err=>{
+              console.log(err)
+            })
+          }
+        }, err =>{
+          console.log('err',err)
+          wx.showToast({
+            title: '上传失败，请稍后重试',
+            icon: "none",
+            duration: 2000
+          })
+        })
+        uploadTask.onProgressUpdate(e => {
+          console.log('process',e)
+        })
+    
+        // 600 毫秒后中断上传
+        // setTimeout(()=> uploadTask.abort(), 600)
+      }else{
+        wx.showToast({
+          title: '文件已上传',
+          icon:'none',
+          duration:1000
+        })
+      }
+    })
     } else {
       //清除计时器  即清除setInter
       clearInterval(that.data.setInter);
       // 获取到结束时间
-      that.stop();
+      recorderManager.stop();   
+      recorderManager.onStop((res) => {
+      that.setData({
+          tmpfile:res.tempFilePath
+      })
+    
       if(that.data.record_permission){
         wx.showToast({
           title: '时间过短，请重新录制',
@@ -252,31 +394,13 @@ Page({
         // isSpeaking: false,
         record_name: "长按开始录制",
         speck_time: "0",
-      })   
+      }) 
+    })  
     }
  
   },
   
-  //开始录音的时候
-  start: function () {
-    const options = {
-      duration: 60000, //指定录音的时长，单位 ms
-      sampleRate: 16000, //采样率
-      numberOfChannels: 1, //录音通道数
-      encodeBitRate: 96000, //编码码率
-      format: 'mp3', //音频格式，有效值 aac/mp3
-      frameSize: 50, //指定帧大小，单位 KB
-    }
-    //开始录音
-    recorderManager.start(options);
-    recorderManager.onStart(() => {
-      console.log('recorder start')
-    });
-    //错误回调
-    recorderManager.onError((res) => {
-      console.log(res);
-    })
-  },
+  
   //播放声音
   btn_play: function () {
     // innerAudioContext.autoplay = true
@@ -289,7 +413,7 @@ Page({
     //   console.log(res.errCode)
     // })
     if(this.data.record_permission == false){
-    innerAudioContext.src = this.data.tmpfile
+    innerAudioContext.src = this.data.record[that.data.current]
     innerAudioContext.play()
     }else{
       wx.showToast({
@@ -302,6 +426,7 @@ Page({
 // 重新录制
 btn_remove: function () {
   var that = this;
+  let tableName = 'cartoon_trace'
   //当不可录音的时候才可以使用，意思就是已经有录音了
   if(that.data.record_permission == false){ 
   if(that.data.record[that.data.current] !== undefined){
@@ -322,6 +447,17 @@ btn_remove: function () {
     this.setData({
       record_permission: true,
     })
+    if (that.data.flag = that.data.inform.sentenceTotal){
+      let recordID = this.data.newDataId;
+      let Product = new wx.BaaS.TableObject(tableName)
+      Product.delete(recordID).then(res => {
+      // success
+      console.log(res)
+    }, err => {
+    // err
+      console.log(err)
+    })
+    }
     that.data.flag = that.data.flag - 1
     this.setData({
       flag:that.data.flag
@@ -347,112 +483,14 @@ btn_remove: function () {
   })
 }
 },
-  //停止录音
-  stop: function () {
-    var that = this
-    // var formFilePath =[];
-    recorderManager.stop();   
-    recorderManager.onStop((res) => {
-      this.setData({
-        tmpfile:res.tempFilePath
-      })
-      // that.data.formFile[that.data.current] = res.tempFilePath;
-      // that.setData({
-      //   formFile: that.data.formFile
-      // })
-      console.log('停止录音', res.tempFilePath)
-      console.log('tempfile',that.data.tmpfile)
-    })
-  },
+  
 
   // 保存录制
-  btn_save: function () {
-    var that = this;
-    //当不可录音的时候才可以使用，意思就是已经有录音了
-    if(that.data.record_permission == false){
-    let tableName = 'cartoon_trace'
-    let addRecord = new wx.BaaS.TableObject(tableName)
-    let add_record = addRecord.create()
+  // btn_save: function () {
+  //   var that = this;
+  //   //当不可录音的时候才可以使用，意思就是已经有录音了
     
-    // for(var index = 0;index<=that.data.current;index ++){
-      let MyFile = new wx.BaaS.File();
-      let temp = (that.data.tmpfile)
-      console.log('tempfile',temp)
-      let fileParams = {filePath: temp}
-      if(that.data.record[that.data.current] == undefined){
-      let uploadTask =  MyFile.upload(fileParams)
-      // 文件成功上传的回调
-      uploadTask.then(res=>{
-        console.log('status',res.data)
-        // 获得文件的id和path
-        that.data.remove_file[that.data.current] = res.data.file.id
-        this.setData({
-          remove_file: that.data.remove_file
-        })
-        console.log('remove_file',that.data.remove_file)
-
-        that.data.record[that.data.current] = res.data.path
-        that.setData({
-          record:that.data.record
-        })
-        console.log('record',that.data.record)
-        // that.setData({
-        //   start_time:res.data.created_at
-        // })
-        wx.showToast({
-          title: '上传成功',
-          icon: "none",
-          duration: 2000
-        })
-        //录音是否完成的标志
-        that.data.flag = that.data.flag + 1
-        this.setData({
-            flag:that.data.flag
-         })
-        if(that.data.flag == that.data.inform.sentenceTotal){
-          //当全部录音完后上传至数据库
-        let startTime = ((new Date()).toISOString()).toString()
-        add_record.set('userId',app.globalData.userInfo.nickName)
-        add_record.set('startTime',startTime)
-        add_record.set('record',that.data.record)
-        add_record.set('materialId',that.data.materialId)
-        add_record.save().then(res => {
-          console.log(res)
-        }).catch(err=>{
-          console.log(err)
-        })
-      }
-    }, err =>{
-      console.log('err',err)
-      wx.showToast({
-        title: '上传失败，请稍后重试',
-        icon: "none",
-        duration: 2000
-      })
-    })
-    uploadTask.onProgressUpdate(e => {
-      console.log('process',e)
-    })
-
-    // 600 毫秒后中断上传
-    setTimeout(()=> uploadTask.abort(), 600)
-  }else{
-    wx.showToast({
-      title: '文件已上传',
-      icon:'none',
-      duration:1000
-    })
-  }
-  // }
-    
-  }else{
-    wx.showToast({
-      title: '请先录制后上传',
-      icon:'none',
-      duration:1000
-    })
-  } 
-  },
+  // },
    
 
   

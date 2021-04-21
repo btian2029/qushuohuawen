@@ -27,7 +27,7 @@ Page({
         introduction:'这是一段介绍文字',
       },{
         id:3,
-        name:'生活',
+        name:'日常生活',
         introduction:'这是一段介绍文字',
       },{
         id:4,
@@ -60,7 +60,7 @@ Page({
     }if(e.currentTarget.id ==3){
       console.log("生活")
       wx.navigateTo({
-      url: '/pages/dialogueSimulation/sort/sort?type='+ '生活',
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '日常生活',
     })
     }if(e.currentTarget.id ==4){
       console.log("个人信息")

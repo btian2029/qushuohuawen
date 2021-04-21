@@ -11,3 +11,17 @@
     height: 50rpx;
     background-color: #554D84;
   }
+  
+  .nav{
+    position: fixed;
+    top:100rpx;
+    z-index: 2;
+    
+  }
+
+  .sort{
+    position: fixed;
+    top:220rpx;
+    right: 3%;
+    z-index: 2;
+  }

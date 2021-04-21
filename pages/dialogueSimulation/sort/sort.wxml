@@ -27,7 +27,7 @@
                 <view class="f-r mb20" style="margin-left:4%" wx:for-item="{{item}}" >
                     <view class="font29" >{{item.topic}}</view>
                     <view class="practice f-r">
-                      <view class="font-purple ">开始练习</view>
+                      <view class="font-purple ">开始对话</view>
                       <image src="/images/Carousel/Carousel_1.png" style="height:50rpx;width:50rpx"></image>
                   </view>
                 </view>

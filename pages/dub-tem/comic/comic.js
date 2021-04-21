@@ -5,10 +5,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-      movies:"",
+      movies_hot:"",
       //如果要传输数组字典等复杂类型，要先使用JSON.stringify()转换成字符串传递
-      num:"",
-      type:""
+      movies_new:"",
+      type:"",
+      active:0,
     },
 
     back: function(e){
@@ -42,27 +43,28 @@ Page({
       var type = options.type;
       let tableName = 'cartoon_material'
       let query = new wx.BaaS.Query()
+      // let query_new = new wx.BaaS.Query()
       query.contains('type',type)
       let movies = new wx.BaaS.TableObject(tableName)
       movies.setQuery(query).find().then(res => {
         // success
         console.log(res.data.objects)
         this.setData({
-          movies:res.data.objects
+          movies_hot:res.data.objects
         })
       }, err => {
         // err
-        console.log("find_err")
+        console.log("find_err",err)
       })
-      movies.setQuery(query).count().then(num => {
-        // success
-        console.log(num) // 10
+      movies.setQuery(query).orderBy('-created_at').find().then(res => {
+        //success
+        console.log(res.data.objects)
         this.setData({
-          num:num
+          movies_new:res.data.objects
         })
       }, err => {
-        // err
-        console.log("num_err")
+        //err
+        console.log("find_err",err)
       })
 
     },
