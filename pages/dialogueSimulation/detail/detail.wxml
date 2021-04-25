@@ -1,0 +1,32 @@
+<!--pages/dialogueSimulation/detail/detail.wxml-->
+<!-- 角色A -->
+<view class="container" wx:if="{{show_select==1}}">
+  <!-- 页面 -->
+<view class="cu-chat" wx:for="{{talk_material}}" wx:key="item" >
+    <!--机器人-->
+      <view class="cu-item" wx:if="{{item.record_order=='A'}}">
+        <view class="f-r" style="">
+          <image src="/images/icon/Capture.png" class="avatar"></image>
+          <view class="f-r chat ml10" style="background-color:#F2F0FB">
+            <view class=" font27 font-purple" style="padding:10rpx">{{item.record_txt}}</view>
+            <image src="/images/icon/voice_A.png" style="height:50rpx;width:50rpx;margin-top:5rpx"></image>
+          </view>
+        </view>
+      </view>
+   <!--用户-->
+  <view class="cu-item" wx:if="{{item.record_order=='B'}}">
+    <view class="f-r " style="margin: auto;margin-right: 10rpx;">
+      <view class="f-r chat ml10" style="background-color:#554D84">
+        <image src="/images/icon/voice_B.png" style="height:50rpx;width:50rpx;margin-top:5rpx"></image>
+        <view class=" font27 font-white" style="padding:10rpx">{{item.record_txt}}</view>
+      </view>
+      <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
+  </view>
+  </view>
+</view>
+<view class="blank-box"></view>
+</view>
+<!-- 角色B -->
+<view class="container" wx:if="{{show_select==2}}">
+角色B
+</view>

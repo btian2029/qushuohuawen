@@ -41,8 +41,8 @@
         <view class="colorhui ml15" >最新</view>   -->
         
     </view>
-    <view class="f-r mb10 sort" style="margin-left:350rpx">
+    <!-- <view class="f-r mb10 sort" style="margin-left:350rpx">
             <image src="/images/icon/icon_sort.png" style="width:40rpx;height:40rpx"></image>
             <view class="font-purple">筛选</view>
-    </view>
+    </view> -->
 </view>

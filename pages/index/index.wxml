@@ -4,12 +4,12 @@
 <view class="container">
   <!-- 搜索框 -->
       <view class=" card f-r f-a-c boxing w90">
-        <image src="/images/icon/icon_mail.png" style="height:70rpx;width:70rpx;margin-bottom:20rpx"></image>
+        <image src="/images/icon/icon_mail.png" style="height:70rpx;width:70rpx;margin-bottom:20rpx" bindtap="onshow"></image>
         <view class="boxing block ml20 mb20 mr20 f-r">
             <image src="/images/icon/icon_search.png" style="height:40rpx;width:40rpx;margin-top:16rpx;margin-bottom:20rpx;margin-left:180rpx"></image>
           <view class="font-purple font30" style="margin-top:16rpx;margin-bottom:20rpx">搜索</view>
         </view>
-        <image src="/images/icon/event.png" style="height:60rpx;width:60rpx;margin-bottom:20rpx"></image>
+        <image src="/images/icon/event.png" style="height:60rpx;width:60rpx;margin-bottom:20rpx" bindtap="onDisplay"></image>
       </view>
 
   <!-- 轮播图 -->
@@ -27,13 +27,12 @@
       <button class="button mt40 " style="width:680rpx" id="{{item.id}}" bindtap="switch_function">{{item.name}}</button>
     </block>
   </view> 
-  <!-- 一个小图标 -->
+  <!-- 一个小图标
   <view class="Capture">
     <image src="/images/icon/Capture.png" style="width:150rpx;height:250rpx" ></image>
-  </view>
+  </view> -->
 </view>
 
-<!-- <import src='/custom-tab-bar/index.wxml' />
-<view>
-  <include src="/custom-tab-bar/index.wxml" />
-</view> -->
+<!-- 日历 -->
+<van-calendar show="{{ show }}" title="每日打卡" bind:close="onClose" color="#554D84" bind:confirm="onConfirm" confirm-text="{{confirm_text}}" ornot="{{ornot}}">
+</van-calendar>

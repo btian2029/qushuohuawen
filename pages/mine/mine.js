@@ -5,50 +5,75 @@ Page({
      * 页面的初始数据
      */
     data: {
-        listInfo: [{
-            text: '首页',
-            imgUrl: '/images/icon/icon_shouye.png',
-            curUrl: '/images/icon/icon_shouye.png',
-          },
-          {
-            text: '圈子',
-            imgUrl: '/images/icon/icon_quanzi.png',
-            curUrl: '/images/icon/icon_quanzi.png',
-          },
-          {
-            text: '我的',
-            imgUrl: '/images/icon/icon_mine_unsel.png',
-            curUrl: '/images/icon/icon_mine.png',
-          }]
+        level:[
+        {
+            level_name:"新生入学",
+        },
+        {
+            level_name:"好学份子", 
+        },
+    ],
+        curlevel:1,
+        percentage:50,
+        image:"/images/Carousel/Carousel_2.png",
+        func:[
+            {
+              id:"1",
+              src:"/images/icon/icon_mine.png",
+              name:"我的档案",
+              url:"/pages/logs/logs"
+            },
+      
+            {
+              id:"2",
+              src:"/images/icon/icon_mine.png",
+              name:"我的跟读",
+              url:"/pages/logs/logs"
+            },
+      
+            {
+              id:"3",
+              src:"/images/icon/icon_mine.png",
+              name:"我的配音",
+              url:"/pages/logs/logs"
+            },
+      
+            {
+              id:"4",
+              src:"/images/icon/icon_mine.png",
+              name:"我的对话",
+              url:"/pages/logs/logs"
+            },
+            
+            {
+                id:"5",
+                src:"/images/icon/icon_mine.png",
+                name:"我的演讲",
+                url:"/pages/logs/logs"
+            },
+        
+            {
+                id:"6",
+                src:"/images/icon/icon_mine.png",
+                name:"我的收藏",
+                url:"/pages/logs/logs"
+            },
+        
+            {
+                id:"7",
+                src:"/images/icon/icon_mine.png",
+                name:"我的成长",
+                url:"/pages/logs/logs"
+            },
+
+            {
+                id:"8",
+                src:"/images/icon/icon_mine.png",
+                name:"意见反馈",
+                url:"/pages/logs/logs"
+            }
+          ],
     },
-    chooseImg: function(e) {
-        var that = this
-        this.setData({
-          curIdx: e.currentTarget.dataset.current
-        })
-        console.log("kk", e.currentTarget.dataset.current)
-        if (e.currentTarget.dataset.current == 0) {
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
-        } else if (e.currentTarget.dataset.current == 1) {
-          wx.switchTab({
-            url: '/pages/moments/moments',
-          })
-        } else if (e.currentTarget.dataset.current == 2) {
-          wx.switchTab({
-            url: '/pages/mine/mine',
-          }) 
-        }
-        that.onShow();
-      },
-      onLoad: function(options) {
-        var curIdx = 0
-        this.setData({
-          curIdx: curIdx,
-        })
-    
-      },
     
     /**
      * 生命周期函数--监听页面加载

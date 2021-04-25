@@ -6,7 +6,7 @@
   "setting": {
     "urlCheck": true,
     "es6": true,
-    "enhance": true,
+    "enhance": false,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
   "appid": "wxb22df735a5ba9c43",
-  "projectname": "qushuoChinese-fu",
+  "projectname": "qushuoChinese",
   "debugOptions": {
     "hidedInDevtools": []
   },

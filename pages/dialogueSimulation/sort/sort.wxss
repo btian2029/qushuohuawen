@@ -28,3 +28,14 @@
   justify-content: center;
   text-align: center;
 }
+
+.blank-box{
+  background-color:#f0f0f0;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+
+.popup{
+  width: 700rpx;
+  background-color:#F2F0FB;
+}

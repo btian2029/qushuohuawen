@@ -19,21 +19,17 @@ Page({
     fuc:[
       { 
         id:1,
-        name:'学习和工作',
+        name:'学习',
         introduction:'这是一段介绍文字',
       },{
         id:2,
-        name:'人际交往',
+        name:'工作',
         introduction:'这是一段介绍文字',
       },{
         id:3,
-        name:'日常生活',
+        name:'生活',
         introduction:'这是一段介绍文字',
-      },{
-        id:4,
-        name:'个人信息',
-        introduction:'这是一段介绍文字',
-      }
+      },
     ]
     
   },
@@ -48,24 +44,19 @@ Page({
   dialogueSimulation:function(e){
     console.log(e.currentTarget)
     if(e.currentTarget.id ==1){
-      console.log("学习和工作")
+      console.log("学习")
       wx.navigateTo({
-      url: '/pages/dialogueSimulation/sort/sort?type='+ '学习和工作',
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '学习',
     })
     }if(e.currentTarget.id ==2){
-      console.log("人际交往")
+      console.log("工作")
       wx.navigateTo({
-      url: '/pages/dialogueSimulation/sort/sort?type='+ '人际交往',
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '工作',
     })
     }if(e.currentTarget.id ==3){
       console.log("生活")
       wx.navigateTo({
-      url: '/pages/dialogueSimulation/sort/sort?type='+ '日常生活',
-    })
-    }if(e.currentTarget.id ==4){
-      console.log("个人信息")
-      wx.navigateTo({
-      url: '/pages/dialogueSimulation/sort/sort?type='+ '个人信息',
+      url: '/pages/dialogueSimulation/sort/sort?type='+ '生活',
     })
     }
   },

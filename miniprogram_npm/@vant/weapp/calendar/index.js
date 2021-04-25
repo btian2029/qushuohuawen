@@ -36,6 +36,10 @@ component_1.VantComponent({
       },
     },
     formatter: null,
+    ornot:{
+      type: Boolean,
+      value: false,
+    },
     confirmText: {
       type: String,
       value: '确定',

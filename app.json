@@ -11,7 +11,8 @@
     "pages/dub-tem/comic/detail/detail",
     "pages/dialogueSimulation/dialogueSimulation",
     "pages/dialogueSimulation/sort/sort",
-    "pages/dialogueSimulation/practice/practice"
+    "pages/dialogueSimulation/practice/practice",
+    "pages/dialogueSimulation/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

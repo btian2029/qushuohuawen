@@ -30,6 +30,7 @@
       currentDate="{{ currentDate }}"
       showSubtitle="{{ showSubtitle }}"
       allowSameDay="{{ allowSameDay }}"
+      ornot="{{ornot}}"
       showMonthTitle="{{ index !== 0 || !showSubtitle }}"
       bind:click="onClickDay"
     />
@@ -42,7 +43,7 @@
   </view>
 
   <view
-    class="{{ utils.bem('calendar__footer', { safeAreaInsetBottom }) }}"
+    class="{{ utils.bem('calendar__footer', { safeAreaInsetBottom }) }}" style="margin:0 auto"
   >
     <van-button
       wx:if="{{ showConfirm }}"
@@ -51,7 +52,7 @@
       type="danger"
       color="{{ color }}"
       custom-class="van-calendar__confirm"
-      disabled="{{ computed.getButtonDisabled(type, currentDate) }}"
+      disabled="{{ computed.getButtonDisabled(type, currentDate,ornot) }}"
       nativeType="text"
       bind:click="onConfirm"
     >

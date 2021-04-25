@@ -27,7 +27,7 @@
     </van-grid>
 </view> -->
 
-<view class="card w90 mt20 ml20 mr10 mb40" style="">
+<view class="card w90 mt20  mr10 mb40" style="margin-top:50rpx">
         <view class="font30 font-purple">分类</view>
 </view>
 
@@ -36,10 +36,10 @@
     <view class="cardreset p30 w100 boxing" wx:for="{{fuc}}"  bindtap="dialogueSimulation" id="{{item.id}}" >
         <view class="row f-r f-a-c f-j-s mb30" style="margin-top:20rpx">
             <view class="f-r f-a-c" wx:for-item="{{item}}">
-                <image src="/images/Carousel/Carousel_1.png" style="height:80rpx;width:80rpx"></image>
-                <view class="f-c font29 ml40">
+                <image src="/images/icon/Capture.png" style="height:80rpx;width:80rpx"></image>
+                <view class="f-c  ml40" style="font-size:36rpx">
                     <view>{{item.name}}</view>
-                    <view class="font27 mt5 color-grey">{{item.introduction}}</view>
+                    <!-- <view class="font27 mt5 color-grey">{{item.introduction}}</view> -->
                 </view>
             </view>
         </view>

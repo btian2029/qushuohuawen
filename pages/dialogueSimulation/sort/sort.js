@@ -1,4 +1,5 @@
 // pages/dialogueSimulation/sort/sort.js
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
   /**
@@ -9,14 +10,43 @@ Page({
     talk:'',
     // 材料数量
     num:'',
-    //是否弹出遮罩层
-    show:false,
     //音频片段id
     id:'',
     // 用于给下一个页面传输标题
     topic:'',
+    show:'',
+    curMaterial:'',
+    txt_index:''
   },
-  //关闭弹出层
+
+  showPopup(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index
+    var material = that.data.talk[index]
+    var num = (material.record_txt).length
+    this.setData({ show: true });
+    console.log("当前材料",material)
+    var json = [];
+    var array = {};
+    for(var i = 0; i < num; i++){
+      array['record_txt'] = material.record_txt[i];
+      array['record_order'] = material.record_order[i];
+      if( material.record_order[i] == 'A'){
+        array['record_character'] = material.character_name[0]
+      }
+      else if( material.record_order[i] == 'B'){
+        array['record_character'] = material.character_name[1]
+      }
+      json.push(array)
+        array = {};
+      }
+    that.setData({
+      curMaterial:json,
+    })
+    console.log(that.data.curMaterial)
+
+  },
+
   onClose() {
     this.setData({ show: false });
   },
@@ -29,22 +59,11 @@ Page({
     this.setData({
       topic:e.currentTarget.dataset.topic
     })
-    this.setData({
-      show:true
-    })
     console.log(e.currentTarget)
     console.log(this.data.topic)
     console.log("switch")
-  },
-
-   //popup 之后的选择，模拟或者练习
-  practice:function(e){
-    var that = this;
-    console.log("选取id",e.currentTarget)
-    console.log("练习片段id",that.data.id)
-    console.log(typeof(that.data.showmodel))
     wx.navigateTo({
-      url: '../practice/practice?recordID=' + that.data.id + '&show_select=' + e.currentTarget.id + '&topic=' + that.data.topic
+      url: '/pages/dialogueSimulation/practice/practice?recordID=' + this.data.id + '&topic=' + this.data.topic,
     })
   },
 
@@ -52,9 +71,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    innerAudioContext.stop()
     var type = options.type;
     //修改导航栏标题
-    wx.setNavigationBarTitle({ title: options.type })
+    wx.setNavigationBarTitle({ title: type })
     // 获取数据部分
     let tableName = 'talk_material'
     let query = new wx.BaaS.Query()
@@ -70,17 +90,17 @@ Page({
       // err
       console.log("find_err")
     })
-    // 查询数量
-    talk.setQuery(query).count().then(num => {
-      // success
-      console.log(num) // 10
-      this.setData({
-        num:num
-      })
-    }, err => {
-      // err
-      console.log("num_err")
-    })
+    // // 查询数量
+    // talk.setQuery(query).count().then(num => {
+    //   // success
+    //   console.log(num)
+    //   this.setData({
+    //     num:num
+    //   })
+    // }, err => {
+    //   // err
+    //   console.log("num_err",err)
+    // })
   },
 
   /**

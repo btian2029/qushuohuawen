@@ -250,6 +250,9 @@
     font-size: 50rpx;
 }
 
+.font15{
+    font-size: 15rpx;
+}
 .font18{
     font-size: 18rpx;
 }

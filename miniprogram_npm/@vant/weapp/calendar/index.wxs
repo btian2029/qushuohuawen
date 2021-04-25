@@ -15,7 +15,15 @@ function getMonths(minDate, maxDate) {
   return months;
 }
 
-function getButtonDisabled(type, currentDate) {
+function getButtonDisabled(type, currentDate, ornot) {
+  if (ornot){
+    return true;
+  }
+  
+  if (!ornot){
+    return false;
+  }
+
   if (currentDate == null) {
     return true;
   }

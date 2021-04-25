@@ -1,4 +1,5 @@
 // pages/dialogueSimulation/practice/practice.js
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
   /**
@@ -11,69 +12,54 @@ Page({
     materialId:'',
     //获得的音频材料数据
     inform:'',
+    // 获得的标题
+    topic:'',
     //数组长度
-    recordA_length:'',
-    recordB_length:'',
     sentenceTotal:'',
     //swiper_current
-    current:0,
     // 展示A或Btxt,默认展示A
-    show:true,
-    // 句子index
-    sentenceIndex:0,
-    record_name:'长按录音'
+    //是否弹出遮罩层
+    show:false,
+    talk_material:""
   },
-
-  //改编页码,播放同步设置
-  swiperchange(event) {   
-    var that = this
-    that.setData({
-      current: event.detail.current
+  choose_role(){
+    this.setData({
+      show:true
     })
-    that.setData({
-      show:!that.data.show
-    })
-    that.setData({
-      sentenceIndex: Math.floor(that.data.current/2)
-    })
-    if(that.data.show){
-      console.log('对话A',that.data.inform.recordA_txt[that.data.sentenceIndex])
-    }else{
-      console.log('对话B',that.data.inform.recordB_txt[that.data.sentenceIndex])
-    }
-
-    // this.setData({
-    //   initial: that.inform.time[that.current]
-    // })
-    // this.videoContext.seek(parseInt(that.initial))
-    // console.log('existing file',that.record,that.record[that.current])
-    // if(that.record[that.current] == undefined){
-    //   this.setData({
-    //     record_permission: true
-    //   })
-    // if (that.current == 0 ){  
-    //   if(that.remove_file[0] == undefined){
-    //     wx.showToast({
-    //       title: '请先上传后再录制下一句噢',
-    //       icon:'none',
-    //       duration:1000
-    //     })
-    //   }
-    // }else{
-    //     if(that.remove_file[that.current] == undefined){
-    //       wx.showToast({
-    //         title: '请先上传后再录制下一句噢',
-    //         icon:'none',
-    //         duration:1000
-    //       })
-    //   } 
-    // }
-    // }
-    // console.log(that.current)
-    // console.log(that.initial)
   },
-
-
+  //关闭弹出层
+  onClose() {
+    this.setData({ show: false });
+  },
+  //popup 之后的选择，模拟或者练习
+  practice:function(e){
+    innerAudioContext.stop()
+    var that = this;
+    console.log("选取id",e.currentTarget)
+    console.log("练习片段id",that.data.materialId)
+    console.log(that.data.topic)
+    wx.navigateTo({
+      url: '../detail/detail?inform=' + JSON.stringify(that.data.inform) + '&show_select=' + e.currentTarget.id + '&topic=' + that.data.topic + '&talk_material=' + JSON.stringify(this.data.talk_material)
+    })
+  },
+  //播放每个片段的录音
+  btn_play:function(e){
+    var index = e.currentTarget.dataset.index
+    innerAudioContext.stop()
+    console.log(e.currentTarget)
+    innerAudioContext.src = this.data.inform.splice_record_source[index]
+    innerAudioContext.play()
+    innerAudioContext.onPlay((res)=>{
+      console.log("正在播放")
+    })
+  },
+  // 播放整段录音
+  playWholeRecord:function(){
+    innerAudioContext.stop()
+    innerAudioContext.src = this.data.inform.record_source
+    console.log( innerAudioContext.src)
+    innerAudioContext.play()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -81,16 +67,12 @@ Page({
     var that = this;
     var topic = options.topic;
     wx.setNavigationBarTitle({ title: topic })
-    let show_select = options.show_select;
     let recordID  = options.recordID;
     that.setData({
-      show_select: show_select
+      materialId: recordID,
+      topic:topic
     })
-    that.setData({
-      materialId: recordID
-    })
-    console.log('show_select',that.data.show_select)
-    console.log('materialIdthat',that.data.materialId)
+    console.log('materialId',that.data.materialId)
     //查表
     let tableName = 'talk_material'
     let Product = new wx.BaaS.TableObject(tableName)
@@ -100,21 +82,27 @@ Page({
        this.setData({
          inform:res.data
        })
-       var recordA_length = (that.data.inform.recordA_txt).length
-       var recordB_length = (that.data.inform.recordB_txt).length
+       var record_length = (that.data.inform.record_txt).length
        that.setData({
-         recordA_length: recordA_length
-       })
-       that.setData({
-         recordB_length: recordB_length
-       })
-       that.setData({
-        sentenceTotal: recordA_length + recordB_length
+        sentenceTotal: record_length
        })
        console.log('sentenceTotal',that.data.sentenceTotal)
-       
+       var json = [];
+       var array = {};
+      for(var i = 0; i < record_length; i++){
+        array['record_txt'] = res.data.record_txt[i];
+        array['record_order'] = res.data.record_order[i];
+        array['record_source']  = res.data.splice_record_source[i];
+        json.push(array)
+        array = {};
+      }
+      that.setData({
+        talk_material:json
+      })
+      console.log(that.data.talk_material)
      }, err => {
        // err
+       console.log("err",err)
      })
   },
 
