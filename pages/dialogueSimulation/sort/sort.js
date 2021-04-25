@@ -88,7 +88,7 @@ Page({
       })
     }, err => {
       // err
-      console.log("find_err")
+      console.log("find_err",err)
     })
     // // 查询数量
     // talk.setQuery(query).count().then(num => {

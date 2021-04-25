@@ -41,6 +41,7 @@ Page({
       flag:0,
       //上传后数据id
       newDataId:"",
+      curTime:0,
     },
 
   
@@ -49,6 +50,15 @@ Page({
       this.setData({
         show: !this.data.show
       })
+    },
+
+    timeUpdate: function (e) {
+      //实时播放进度 秒数
+        var currentTime = parseInt(e.detail.currentTime)
+        this.setData({
+          curTime: currentTime
+        })
+        console.log("视频播放到第" + this.data.curTime + "秒")//查看正在播放时间，以秒为单位
     },
 
     //播放与否，循环播放
@@ -62,6 +72,11 @@ Page({
       }
       else{
         this.videoContext.play()
+        // if(this.data.current+1 < this.data.inform.sentenceTotal){
+        //   if(this.data.curTime == this.data.inform.time[this.data.current + 1]){
+        //     this.videoContext.seek(parseInt(this.data.initial))
+        //   }
+        // }
       }
     },
 
@@ -413,7 +428,7 @@ Page({
     //   console.log(res.errCode)
     // })
     if(this.data.record_permission == false){
-    innerAudioContext.src = this.data.record[that.data.current]
+    innerAudioContext.src = this.data.record[this.data.current]
     innerAudioContext.play()
     }else{
       wx.showToast({
@@ -447,7 +462,7 @@ btn_remove: function () {
     this.setData({
       record_permission: true,
     })
-    if (that.data.flag = that.data.inform.sentenceTotal){
+    if (that.data.flag == that.data.inform.sentenceTotal){
       let recordID = this.data.newDataId;
       let Product = new wx.BaaS.TableObject(tableName)
       Product.delete(recordID).then(res => {
@@ -483,16 +498,6 @@ btn_remove: function () {
   })
 }
 },
-  
-
-  // 保存录制
-  // btn_save: function () {
-  //   var that = this;
-  //   //当不可录音的时候才可以使用，意思就是已经有录音了
-    
-  // },
-   
-
   
     /**
      * 生命周期函数--监听页面加载

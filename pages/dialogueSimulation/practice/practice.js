@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //用于判断是模拟还是练习，也从上个材料返回
+    //用于选择角色
     show_select:'',
     //上个页面传回来的recordID
     materialId:'',
@@ -39,8 +39,8 @@ Page({
     console.log("练习片段id",that.data.materialId)
     console.log(that.data.topic)
     wx.navigateTo({
-      url: '../detail/detail?inform=' + JSON.stringify(that.data.inform) + '&show_select=' + e.currentTarget.id + '&topic=' + that.data.topic + '&talk_material=' + JSON.stringify(this.data.talk_material)
-    })
+      url: '../detail/detail?inform=' + JSON.stringify(that.data.inform) + '&show_select=' + e.currentTarget.id + '&topic=' + that.data.topic + '&talk_material=' + JSON.stringify(this.data.talk_material) + '&sentenceTotal=' + that.data.sentenceTotal
+     })
   },
   //播放每个片段的录音
   btn_play:function(e){

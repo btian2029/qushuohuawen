@@ -10,10 +10,10 @@
 <view class="container0 mt20 mb40 f-c">
   <view class="container" >请选择角色</view>
   <view class="f-r mt40">
-    <view class="button" style="width:20%;margin-left:20%"  bindtap="practice" id="{{A}}">
+    <view class="button" style="width:20%;margin-left:20%"  bindtap="practice" id="{{1}}">
       <view class="font27">角色A</view>
     </view>
-    <view class="button practice" style="width:20%;margin-right:20%"  bindtap="practice" id="{{B}}">
+    <view class="button practice" style="width:20%;margin-right:20%"  bindtap="practice" id="{{2}}">
       <view class="font27">角色B</view>
     </view>
   </view>

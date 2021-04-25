@@ -27,8 +27,8 @@
     </van-grid>
 </view> -->
 
-<view class="card w90 mt20  mr10 mb40" style="margin-top:50rpx">
-        <view class="font30 font-purple">分类</view>
+<view class="card w90 mt20  mr10 mb40" style="margin-top:50rpx;margin-left:30rpx">
+        <view class="font-purple" style="font-size:40rpx">分类</view>
 </view>
 
 <!-- 底下四个模块 -->
