@@ -1,6 +1,0 @@
-<!--pages/moment/moment.wxml-->
-<text>pages/moment/moment.wxml</text>
-<!-- <import src='/custom-tab-bar/index.wxml' />
-<view>
-  <include src="/custom-tab-bar/index.wxml" />
-</view> -->

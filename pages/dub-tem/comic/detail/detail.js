@@ -28,7 +28,6 @@ Page({
       // voices: [], //音频数组  
       // 默认按住录音
       record_name: "长按录音",
-      start_time: "",
       // 录制最终时间
       speck_time: 0,
       //存储计时器
@@ -72,11 +71,6 @@ Page({
       }
       else{
         this.videoContext.play()
-        // if(this.data.current+1 < this.data.inform.sentenceTotal){
-        //   if(this.data.curTime == this.data.inform.time[this.data.current + 1]){
-        //     this.videoContext.seek(parseInt(this.data.initial))
-        //   }
-        // }
       }
     },
 
@@ -522,6 +516,14 @@ btn_remove: function () {
      }, err => {
        // err
      })
+    //  while(!this.data.stop){
+    //   if(this.data.current+1 < this.data.inform.sentenceTotal){
+    //     if(this.data.curTime == this.data.inform.time[this.data.current + 1]){
+    //       this.videoContext.seek(parseInt(this.data.initial))
+    //     }
+    //   }
+    // }
+
     },
   
     /**
@@ -535,7 +537,7 @@ btn_remove: function () {
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-  
+      
     },
   
     /**

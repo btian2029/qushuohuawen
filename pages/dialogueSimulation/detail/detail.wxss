@@ -1,5 +1,19 @@
 /* pages/dialogueSimulation/detail/detail.wxss */
+.practice{
+  margin: auto;
+  margin-right: 4%;
+}
 
+.button {
+  color: #ffffff;
+  height: 50rpx;
+  background-color: #554D84;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .cu-chat .cu-item {
   display: flex;
@@ -32,14 +46,28 @@
 }
 
 .btn{
-  width: 200rpx;
+  width: 100rpx;
   background-color: #fff;
   box-sizing: border-box;
   position: fixed;
   height: 100rpx;
+  align-items: center;
   bottom: 50rpx;
-  
+  border-radius: 50%;  
 }
+
+
+.circle{
+  position:fixed;
+  bottom: 50rpx;
+  border-radius: 50%;
+  z-index: 2;
+    height: 85rpx;
+    width: 85rpx;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
 .blank-box{
   box-sizing: border-box;
   height: 200rpx;

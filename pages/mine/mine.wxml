@@ -1,6 +1,6 @@
 <!--pages/mine/mine.wxml-->
 
-<view class="w90 f-r " style="padding:20rpx">
+<view class="w90 f-r " style="padding:20rpx;">
   <image src="{{image}}" style="width:150rpx;height:150rpx;margin-top:30rpx;margin-left:10px;border-radius:50%"></image>
   <view class="f-c" style="margin-left:60rpx">
     <view style="">努力学习中文的程序员</view>
@@ -21,8 +21,6 @@
     </view>
   </view>
 </view>
-
-<view class="container">
 <!-- <view class="funcInfo1 pad1 mb10 func2">
   <view class="func3" wx:for="{{index}}" wx:key="item">
     <image class="image2" src="{{item.src}}"></image>
@@ -30,8 +28,9 @@
   </view>
 </view> -->
 
-<view class="list-wrapper">
-  <view class="div-line"></view>
+<view class="container">
+  <view class="list-wrapper" style="">
+    <view class="div-line"></view>
     <block wx:for="{{func}}" wx:key="item">
       <navigator url="{{item.url}}" class="list-item" hover-class="list-item_active">
         <view class='item'>
@@ -39,7 +38,7 @@
           <text class="item-text">{{item.name}}</text>
         </view>
       </navigator>
-    <view class="div-line"></view>
+      <view class="div-line"></view>
     </block>
   </view>
-</view>  
+</view>

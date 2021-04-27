@@ -10,6 +10,7 @@ Page({
 //index.js  
 //获取应用实例  
   data: {  
+    greeting:'',
     Carousel:[
       {url:'/images/Carousel/Carousel_1.png'} ,  
       {url:'/images/Carousel/Carousel_2.png'} ,  
@@ -43,8 +44,64 @@ Page({
     ornot:false,
     date:"",
     confirm_text:"打卡",
+    message:false,
   },  
   onLoad: function () {
+    var that = this;
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000;
+    // console.log("当前时间戳为：" + timestamp);
+
+    //获取当前时间
+    var n = timestamp * 1000;
+
+    var date = new Date(n);
+    //获取时
+    var h = date.getHours();
+    
+    console.log("现在的时间是"+h+"点")
+
+  
+    if (0 < h && h <= 6) {
+     
+      console.log("  0：00—6:00")
+      that.setData({
+        greeting: '凌晨好'
+      })
+    } else if (6 <= h && h < 11) {
+     
+      console.log("6：00—11:00")
+      that.setData({
+        greeting: '早上好'
+      })
+    }
+    else if (11 <= h && h <= 13) {
+     
+      console.log("11：00—13:00")
+      that.setData({
+        greeting: '中午好'
+      })
+    } else if (13 <= h && h <= 16) {
+    
+      console.log("18:00—24:00")
+      that.setData({
+        greeting:'下午好'
+      })
+    }
+    else if (16 <= h && h <= 18) {
+     
+      console.log("16：00：00—18:00")
+      that.setData({
+        greeting: '傍晚好'
+      })
+    }
+    else {
+      
+       console.log("晚上啦")
+        that.setData({
+          greeting: '晚上好'
+      })
+    }
   },
   //日历开关
   onDisplay() {
@@ -53,6 +110,14 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
+  //消息
+  onshow() {
+    this.setData({ message: true });
+  },
+  onMessageClose() {
+    this.setData({ message: false });
+  },
+
   //日期获取
   formatDate(date) {
     date = new Date(date);

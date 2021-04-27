@@ -4,7 +4,6 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/mine/mine",
-    "pages/moments/moments",
     "pages/dub/dub",
     "pages/dub-tem/comic/comic",
     "pages/dub-tem/comic/monkey/monkey",
@@ -36,12 +35,6 @@
         "iconPath": "/images/icon/home_unsel.png",
         "pagePath": "pages/index/index",
         "text": "首页"
-      },
-      {
-        "selectedIconPath": "/images/icon/icon_quanzi_sel.png",
-        "iconPath": "/images/icon/icon_quanzi_unsel.png",
-        "pagePath": "pages/moments/moments",
-        "text": "圈子"
       },
       {
         "selectedIconPath": "/images/icon/icon_mine.png",

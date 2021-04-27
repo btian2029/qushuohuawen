@@ -1,6 +1,27 @@
 <!--pages/dialogueSimulation/detail/detail.wxml-->
-<!-- 角色A -->
-<view class="" wx:if="{{show_select=='1'}}">
+<!-- 弹出层样式 -->
+<van-popup
+  show="{{ finish }}"
+  position="top"
+  bind:close="onClose"
+  round
+  closeable
+>
+<view class="container0 mt20 mb40 f-c">
+  <view class="container" >请选择</view>
+  <view class="f-r mt40">
+    <view class="button" style="width:20%;margin-left:20%"  bindtap="practice" id="{{1}}">
+      <view class="font27">重选角色</view>
+    </view>
+    <view class="button practice" style="width:20%;margin-right:20%"  bindtap="practice" id="{{2}}">
+      <view class="font27">返回首页</view>
+    </view>
+  </view>
+</view>
+</van-popup>
+
+<!-- 角色B -->
+<view class="" wx:if="{{show_select=='2'}}">
   <!-- 页面 -->
   <view class="cu-chat" wx:for="{{talk_material}}" wx:key="item" wx:for-index="index">
     <view wx:if="{{index < done_record}}">
@@ -10,17 +31,41 @@
           <image src="/images/icon/Capture.png" class="avatar"></image>
           <view class="f-r chat ml10" style="background-color:#F2F0FB">
             <view class=" font27 font-purple" style="padding:10rpx">{{item.record_txt}}</view>
-            <image src="/images/icon/voice_A.png" style="height:50rpx;width:50rpx;margin-top:5rpx" bindtap="btn_play" data-index="{{index}}" ></image>
+            <image src="/images/icon/voice_A.png" style="height:50rpx;width:50rpx;margin-top:15rpx" bindtap="btn_play" data-index="{{index}}" ></image>
           </view>
         </view>
       </view>
    <!--用户-->
       <view class="cu-item" wx:if="{{item.record_order=='B'}}">
         <view class="f-r " style="margin: auto;margin-right: 10rpx;">
-          <view class="f-r chat ml10" style="background-color:#554D84">
-            <image src="/images/icon/voice_B.png" style="height:50rpx;width:50rpx;margin-top:5rpx"></image>
-            <view class=" font27 font-white" style="padding:10rpx">{{item.record_txt}}</view>
-          </view>
+          <view class="f-c chat" style="background-color:#554D84">
+            <!-- 对话框 -->
+            <view class="f-r ml10" >
+              <image src="/images/icon/voice_B.png" style="height:50rpx;width:50rpx;margin-top:15rpx" bindtap="btn_play" data-index="{{index}}"></image>
+              <view class=" font27 font-white" style="padding:10rpx">{{item.record_txt}}</view>
+            </view>
+            <!-- 评测 -->
+            <view class="" style="margin-left:60rpx;margin-top:20rpx">
+              <view class='f-r' catchtap='panel'  data-index="{{index}}">
+                <view class='font-white'>点击查看评测</view>
+                <view class='title_2'><image src="/images/icon/{{showIndex == index ? 'down':'right'}}.png" style="width:50rpx;height:50rpx"></image></view>
+              </view>
+              <view class='detail font-white' wx:if="{{showIndex == index}}">
+                <view class="f-r">
+                  <view class="f-c" >
+                    <view class="font-white font27" >完整度:{{evaluating[index].completion}}</view>
+                    <view class="font-white font27" >流利度：{{evaluating[index].fluency}}</view>
+                    <view class="font-white font27" >准确度：{{evaluating[index].accurancy}}</view>
+                    <view class="font-white font27" >语调：{{evaluating[index].intonation}}</view>
+                  </view>
+                  <view class="f-c" style="margin-left:80rpx;align-items: center;">
+                    <image src="/images/icon/mine_record.svg" style="width:80rpx;height:80rpx" bindtap="play_myown" data-index="{{index}}"></image>
+                    <view> 播放我的语音</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view> 
           <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
         </view>
       </view>
@@ -29,27 +74,52 @@
   <view class="blank-box"></view>
   <view class="bottom">
     <view class="f-r">
-      <view class="btn" style="left:100rpx" bindtap="playWholeRecord" >
-        <view class="font-purple mt20 ml10" style="margin-left:30rpx" >播放音频</view>
+      <view class="btn" style="left:300rpx" bindlongpress='touchdown'  bindtouchend="touchup" >
+        <image src="/images/icon/microphon.png" style="height:50rpx;width:50rpx;margin-top:20rpx;margin-left:25rpx"></image>
       </view>
+      <view class="font-white" style="position:fixed;bottom:10rpx;left:290rpx">{{record_name}}</view>
       <view class="btn" style="right:100rpx">
-        <view class="font-purple mt20" style="margin-left:30rpx" bindtap="choose_role">开始对话</view>
+        <view class="font-purple mt20" style="margin-top:30rpx;margin-left:20rpx" bindtap="finish">完成</view>
       </view>
     </view>
   </view>
 </view>
-<!-- 角色B -->
-<view wx:if="{{show_select=='2'}}">
+<!-- 角色A -->
+<view wx:if="{{show_select=='1'}}">
   <!-- 页面 -->
-  <view class="cu-chat" wx:for="{{talk_material}}" wx:key="item" wx:for-index="bindex">
-    <view wx:if="{{bindex <= done_record}}">
+  <view class="cu-chat" wx:for="{{talk_material}}" wx:key="item" wx:for-index="index">
+    <view wx:if="{{index < done_record}}">
       <!--用户-->
       <view class="cu-item" wx:if="{{item.record_order=='A'}}">
         <view class="f-r " style="margin: auto;margin-right: 10rpx;">
-          <view class="f-r chat ml10" style="background-color:#554D84">
-            <image src="/images/icon/voice_B.png" style="height:50rpx;width:50rpx;margin-top:5rpx" ></image>
-            <view class=" font27 font-white" style="padding:10rpx">{{item.record_txt}}</view>
-          </view>
+          <view class="f-c chat" style="background-color:#554D84">
+            <!-- 对话框 -->
+            <view class="f-r ml10" >
+              <image src="/images/icon/voice_B.png" style="height:50rpx;width:50rpx;margin-top:15rpx" bindtap="btn_play" data-index="{{index}}"></image>
+              <view class=" font27 font-white" style="padding:10rpx">{{item.record_txt}}</view>
+            </view>
+            <!-- 评测 -->
+            <view class="" style="margin-left:60rpx;margin-top:20rpx">
+              <view class='f-r' catchtap='panel'  data-index="{{index}}">
+                <view class='font-white'>点击查看评测</view>
+                <view class='title_2'><image src="/images/icon/{{showIndex == index ? 'down':'right'}}.png" style="width:50rpx;height:50rpx"></image></view>
+              </view>
+              <view class='detail font-white' wx:if="{{showIndex == index}}">
+                <view class="f-r">
+                  <view class="f-c" >
+                    <view class="font-white font27" >完整度:{{evaluating[index].completion}}</view>
+                    <view class="font-white font27" >流利度：{{evaluating[index].fluency}}</view>
+                    <view class="font-white font27" >准确度：{{evaluating[index].accurancy}}</view>
+                    <view class="font-white font27" >语调：{{evaluating[index].intonation}}</view>
+                  </view>
+                  <view class="f-c" style="margin-left:80rpx;align-items: center;">
+                    <image src="/images/icon/mine_record.svg" style="width:80rpx;height:80rpx" bindtap="play_myown" data-index="{{index}}"></image>
+                    <view> 播放我的语音</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view> 
           <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
         </view>
       </view>
@@ -59,7 +129,7 @@
           <image src="/images/icon/Capture.png" class="avatar"></image>
           <view class="f-r chat ml10" style="background-color:#F2F0FB">
             <view class=" font27 font-purple" style="padding:10rpx">{{item.record_txt}}</view>
-            <image src="/images/icon/voice_A.png" style="height:50rpx;width:50rpx;margin-top:5rpx" bindtap="btn_play" data-index="{{index}}"></image>
+            <image src="/images/icon/voice_A.png" style="height:50rpx;width:50rpx;margin-top:15rpx" bindtap="btn_play" data-index="{{index}}"></image>
           </view>
         </view>
       </view>
@@ -68,11 +138,12 @@
   <view class="blank-box"></view>
   <view class="bottom">
     <view class="f-r">
-      <view class="btn" style="left:100rpx" bindtap="playWholeRecord" >
-        <view class="font-purple mt20 ml10" style="margin-left:30rpx" >播放音频</view>
+      <view class="btn" style="left:300rpx" bindlongpress='touchdown'  bindtouchend="touchup" >
+        <image src="/images/icon/microphon.png" style="height:50rpx;width:50rpx;margin-top:20rpx;margin-left:25rpx"></image>
       </view>
-      <view class="btn" style="right:100rpx">
-        <view class="font-purple mt20" style="margin-left:30rpx" bindtap="choose_role">开始对话</view>
+      <view class="font-white" style="position:fixed;bottom:10rpx;left:290rpx">{{record_name}}</view>
+      <view class="btn" style="right:80rpx">
+        <view class="font-purple mt20" style="margin-top:30rpx;margin-left:20rpx" bindtap="finish">完成</view>
       </view>
     </view>
   </view>
