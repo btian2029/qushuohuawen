@@ -16,7 +16,7 @@
                 <view class=" card f-r f-a-c boxing w90 ml10" style="">    
                     <van-grid column-num="2" border="{{ false }}" gutter="{{ 5 }}">
                         <van-grid-item use-slot wx:for="{{ movies_hot }}" wx:for-item="item" bind:click="performan" id="{{item.id}}">
-                            <image style="width:180rpx; height: 360rpx;"  src="{{item.img_source}}" />
+                            <image style="width:200rpx; height: 320rpx;"  src="{{item.img_source}}" />
                             <view class="font-purple font25">{{item.name}}</view>
                             <view class="colorhui font18">99人练过</view>
                             <van-button  color="#554D84" round custom-style="width:40rpx" size="mini" >去演出</van-button>
@@ -28,7 +28,7 @@
                 <view class=" card f-r f-a-c boxing w90 ml10" style="">    
                     <van-grid column-num="2" border="{{ false }}" gutter="{{ 5 }}">
                         <van-grid-item use-slot wx:for="{{ movies_new }}" wx:for-item="item" bind:click="performan" id="{{item.id}}">
-                            <image style="width:180rpx; height: 360rpx;"  src="{{item.img_source}}" />
+                            <image style="width:200rpx;height:320rpx;"  src="{{item.img_source}}" />
                             <view class="font-purple font25">{{item.name}}</view>
                             <view class="colorhui font18">99人练过</view>
                             <van-button  color="#554D84" round custom-style="width:40rpx" size="mini" >去演出</van-button>

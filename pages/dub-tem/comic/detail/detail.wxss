@@ -96,3 +96,12 @@
     border: 1px solid #D2CEEC;
     border-radius: 40rpx;
 }
+
+.bblock {
+    width: 300rpx;
+    height: 70rpx;
+    background-color: #F2F0FB;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+  }

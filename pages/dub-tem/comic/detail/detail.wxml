@@ -4,7 +4,7 @@
 
 	<swiper wx:if="{{current<inform.sentenceTotal}}" indicator-dots="{{false}}" autoplay="{{false}}" current="{{current}}"
 		style="height:610rpx" bindchange="swiperchange">
-		<block wx:for="{{inform.sentenceTotal+1}}" wx:key="index">
+		<block wx:for="{{inform.sentenceTotal}}" wx:key="index">
 			<swiper-item>
 				<view class="father p-r ">
 					<view class="p-r pt20">
@@ -77,9 +77,10 @@
 
 
 	<view wx:if="{{current==inform.sentenceTotal}}" class="stop p20 t-c">
-		<view class="font30 font-w600">你被评为</view>
-		<view class="font35 font-w600 m40">配音达人</view>
-		<view class="font-w600 pl100 pr100">一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话一些鼓励的话</view>
+		<view class="font30 font-w600 mt40">你的总分为：{{score_detail.grade}}</view>
+		<view class="font30 font-w600 mt10">你被评为</view>
+		<view class="font35 font-w600 m40 mt10">{{curLevel.designation}}</view>
+		<view class="font-w600 pl100 pr100">{{curLevel.encouragement}}</view>
 		<view class="mt40 stop-btn" bindtap="look">查看评分详情</view>
 		<view class="mt40 stop-btn" bindtap="share">分享我的配音</view>
 	</view>
@@ -89,3 +90,47 @@
 		<view class="one-btn-right" bindtap="back2index">返回</view>
 	</view>
 </view>
+
+
+<van-popup
+  show="{{ ondisplay }}"
+  round
+  position="bottom"
+  custom-style="height: 40%"
+  bind:close="onClose"
+>
+<view class="f-c container mt40">
+	<view class="f-r" style="margin-top:20rpx">
+		<view class="bblock mr20">
+			语音：{{score_detail.voice}}
+		</view>
+		<view class="bblock ml20">
+			音量：{{score_detail.volume}}
+		</view>
+	</view>
+	<view class="f-r" style="margin-top:20rpx">
+		<view class="bblock mr20">
+			流畅度：{{score_detail.fluency}}
+		</view>
+		<view class="bblock ml20">
+			准确度：{{score_detail.accurancy}}
+		</view>
+	</view>
+	<view class="f-r" style="margin-top:20rpx">
+		<view class="bblock mr20">
+			清晰度：{{score_detail.definition}}
+		</view>
+		<view class="bblock ml20">
+			语调/句调：{{score_detail.intonation}}
+		</view>
+	</view>
+	<view class="f-r" style="margin-top:20rpx">
+		<view class="bblock mr20">
+			重音：{{score_detail.stress}}
+		</view>
+		<view class="bblock ml20">
+			节奏停顿：{{score_detail.pause}}
+		</view>
+	</view>
+</view>
+</van-popup>

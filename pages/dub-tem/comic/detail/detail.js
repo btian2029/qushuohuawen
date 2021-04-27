@@ -41,9 +41,33 @@ Page({
       //上传后数据id
       newDataId:"",
       curTime:0,
+      level:[
+        {
+          designation:"配音王者",
+          encouragement:"角色因你而活，你为角色而生"
+        },
+        {
+          designation:"配音宗师",
+          encouragement:"声音洪亮、情绪饱满，你就是为配音量身定做"
+        },
+        {
+          designation:"配音达人",
+          encouragement:"以声为剑，骑马仗剑走天涯"
+        },
+        {
+          designation:"配音新星",
+          encouragement:"坚持热爱，成为称霸配音界的闪亮明星！"
+        }
+      ],
+      curLevel:[],
+      ondisplay:false,
+      score_detail:""
     },
 
-  
+    //关闭popup
+    onClose() {
+      this.setData({ show: false });
+    },
     //显示拼音
     showpinyin() {
       this.setData({
@@ -118,29 +142,63 @@ Page({
     fast_speed(){
       this.videoContext.playbackRate(1.5)
     },
-    // finish:function(e) {
-    //   var index = 0
-    //   id = index +1
-    //   console.log(id)
-    //   while(id <=19){
-    //     if (id <19) {
-    //       wx.showToast({
-    //         title: '对不起，请先完成测试',
-    //         icon: 'none'
-    //       })
-    //     }
-    //     if (id == 19) {
-    //     this.setData({
-    //       current: 20
-    //     })
-    //     console.log(e)
-    //   }
-    // }
-    // },
-  
-    //完成事件
-  
+    //计算评分    
+    calculate:function(){
+      //语音
+      var voice = Math.floor(Math.random() * (100 - 60)) + 60
+      // 音量
+      var volume = Math.floor(Math.random() * (100 - 60)) + 60
+      //流畅度
+      var fluency = Math.floor(Math.random() * (100 - 60)) + 60
+      // 准确度
+      var accurancy = Math.floor(Math.random() * (100 - 60)) + 60
+      // 清晰度
+      var definition = Math.floor(Math.random() * (100 - 60)) + 60
+      // 语调、句调
+      var intonation = Math.floor(Math.random() * (100 - 60)) + 60
+      // 重音
+      var stress = Math.floor(Math.random() * (100 - 60)) + 60
+      // 节奏停顿
+      var pause = Math.floor(Math.random() * (100 - 60)) + 60
+
+       var grade = Math.ceil(0.15*voice + 0.1*volume + 0.15*fluency + 0.15*accurancy + 0.15*definition + 0.1*intonation + 0.1*stress +0.1*pause)
+       var json = {
+        voice:voice,
+        volume:volume,
+        fluency:fluency,
+        accurancy: accurancy,
+        definition:definition,
+        intonation: intonation,
+        stress:stress,
+        pause:pause,
+        grade:grade
+        }
+        this.setData({
+          score_detail:json
+        })
+        console.log(this.data.score_detail)
+      if(grade > 60 && grade < 70){
+        this.setData({
+          curLevel: this.data.level[3]
+        })
+      }if(grade >= 70 && grade < 80){
+        this.setData({
+          curLevel: this.data.level[2]
+        })
+      }if(grade >= 80 && grade < 90){
+        this.setData({
+          curLevel: this.data.level[1]
+        })
+      }if(grade >= 90 && grade <= 100){
+        this.setData({
+          curLevel: this.data.level[0]
+        })
+      }
+      console.log(this.data.curLevel)
+    },
+  //完成事件
     finish(event){
+      this.calculate();
       this.setData({
         current: this.data.inform.sentenceTotal
       })
@@ -180,7 +238,7 @@ Page({
   
     //查看配音内容
     look() {
-      console.log('查看配音内容');
+      this.setData({ ondisplay: true });
     },
     //开始录音的时候
   start: function () {
