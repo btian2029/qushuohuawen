@@ -1,0 +1,33 @@
+<!--pages/develop/develop.wxml-->
+<view class="contain" style="width: -240rpx; height: 94rpx; display: block; box-sizing: border-box">
+
+  <image src='https://cloud-minapp-38640.cloud.ifanrusercontent.com/1lMl7lqK1zumElZD.JPG'
+   style="width: 216rpx; height: 312rpx; display: block; box-sizing: border-box; position: relative; left: 18rpx; top: 26rpx"></image>
+
+    <text class="textTitle" style="position: relative; left: 234rpx; top: -256rpx">《发展汉语》初级综合二</text>
+   <text class="textSmall" style="position: relative; left: 256rpx; top: -50rpx">
+    共 {{number}}课</text>
+
+   
+
+    <view class="line" style="width: 750rpx; height: 2rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -30rpx"></view>
+
+<!-- 目录 -->
+     
+
+        <text class="textTitle" style="left: 326rpx; top: -8rpx; position: relative">目录</text>
+      
+
+      <block wx:for= "{{chapter}}"wx:for-item="item" wx:key="index" >
+      
+      <button class='chapterButton'
+       style="position: relative; width: 750rpx; height: 54rpx; display: block; box-sizing: border-box; left: 4rpx; top: -8rpx; margin: 15rpx"
+       bindtap='bindtapView' id = '{{index}}'>《{{item.name}}》
+      
+      <text class='chapterText'>第{{index+1}}课</text>
+
+    <text class='practice' style="width: 78rpx; height: 80rpx; display: block; box-sizing: border-box; position: relative; left: 624rpx; top: -30rpx">读一读</text>
+</button>
+    </block>
+    </view>
+    

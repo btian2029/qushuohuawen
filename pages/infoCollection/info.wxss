@@ -1,0 +1,65 @@
+/* pages/infoCollection/info.js.wxss */
+
+.title{
+  color: #554D84;
+  font-size: 14px;
+  font-weight: bold
+}
+
+.subtitle{
+  color: #554D84;
+  font-size: 12px;
+  display:flex;
+}
+.input-detail{
+  height: 50rpx; 
+  line-height: 50rpx;
+  background-color: #fff;
+  font-size: 20rpx;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+page{background-color: #efeff4;}
+.tui-picker-content{
+  padding: 30rpx; 
+  /* 框框填充整个界面的位置 */
+  text-align: left; /* 文本左对齐 */
+}
+
+.tui-picker-detail{
+   height: 50rpx; 
+  line-height: 50rpx;
+  background-color: #fff;
+  font-size: 20rpx;
+  padding: 0 10px;
+  overflow: hidden;
+  left: -20rpx; 
+
+  width: 278rpx; 
+  height: 42rpx; 
+  display: block; 
+  box-sizing: border-box
+}
+
+.button{
+  float: center;
+  font-size: 14px;
+  width:313rpx;
+  height:65rpx;
+  background-color: #7E75B3;
+  color:white;
+  border-radius: 50%;
+  left:20;
+  border-radius:20px;
+}
+
+.toast-detail{
+  float: center;
+  font-size: 14px;
+  width:313rpx;
+  height:65rpx;
+  background-color: #7E75B3;
+  color:white;
+  opacity:0.5;
+}

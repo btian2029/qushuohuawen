@@ -1,0 +1,7 @@
+<!--pages/develop/list/list.wxml-->
+<button wx:for="{{list}}" id = "{{item.id}}" bindtap="bindtapView" style="position: relative; left: -4rpx; top: 18rpx;width:100%">
+<van-card
+  title="{{item.name}}"
+  thumb="{{item.url}}"
+/>
+</button>

@@ -1,0 +1,10 @@
+<view class = "container"  style="width: 755rpx; height: 1302rpx; display: flex; box-sizing: border-box; position: fixed; left: -2rpx; top: -4rpx">
+
+
+
+  <block wx:for="{{func}}">
+      <button class="textTitle " style="width: 680rpx; height: 350rpx; position: relative; left: 0rpx; top: 124rpx" id="{{item.id}}" bindtap="switch_function">{{item.name}}</button>
+    </block>
+
+</view>
+

@@ -1,0 +1,142 @@
+<!--pages/infoCollection/info.js.wxml-->
+<view class= "title">
+<text style="position: relative; left: 22rpx; top: 12rpx">完善信息，完成注册</text>
+</view>
+<!-- input -->
+
+
+
+
+  
+   <picker bindchange="changeCountry" 
+    value="{{countryIndex}}"
+     range="{{countryList}}"
+       style="position: relative; left: 26rpx; top: 64rpx">
+    <view class="tui-picker-detail">
+      {{countryList[countryIndex]}}
+    </view>
+  </picker>
+  
+
+  <picker bindchange="changeFirstLanguage"  
+  value="{{firstLanguageIndex}}"
+   range="{{firstLanguageList}}"
+    style="position: relative; left: 26rpx; top: 127rpx">
+    <view class="tui-picker-detail">
+      {{firstLanguageList[firstLanguageIndex]}}
+    </view>
+  </picker>
+
+  <picker bindchange="changeLF"  
+  value="{{LFIndex}}"
+   range="{{LFList}}"
+    style="position: relative; left: 26rpx; top: 189rpx">
+    <view class="tui-picker-detail">
+      {{LFList[LFIndex]}}
+    </view>
+  </picker>
+
+  <picker bindchange="changeAge"  
+  value="{{ageIndex}}"
+   range="{{ageList}}"
+    style="position: relative; left: 26rpx; top: 253rpx">
+    <view class="tui-picker-detail">
+      {{ageList[ageIndex]}}
+    </view>
+  </picker>
+
+
+
+
+   <picker bindchange="changeGender" 
+    value="{{genderIndex}}" 
+    range="{{genderList}}"
+    style="position: relative; left: 26rpx; top: 318rpx">
+    <view class="tui-picker-detail">
+      {{genderList[genderIndex]}}</view>
+  </picker>
+
+
+  <picker bindchange="changeHSK" 
+    value="{{hskIndex}}" 
+    range="{{hskList}}"
+    style="position: relative; left: 26rpx; top: 378rpx">
+    <view class="tui-picker-detail">
+      {{hskList[hskIndex]}}</view>
+  </picker>
+
+  <picker bindchange="changeOrigin" 
+   value="{{originIndex}}" 
+   range="{{originList}}"
+   style="position: relative; left: 26rpx; top: 450rpx">
+    <view class="tui-picker-detail">
+      {{originList[originIndex]}}</view>
+  </picker>
+
+  <picker bindchange="changeGeneration" 
+   value="{{generationIndex}}" 
+   range="{{generationList}}"
+   style="position: relative; left: 376rpx; top: 409rpx">
+    <view class="tui-picker-detail">
+      {{generationList[generationIndex]}}</view>
+  </picker>
+
+  <picker bindchange="changeLearn" 
+   value="{{learnIndex}}"
+    range="{{learnList}}"
+    style="position: relative; left: 26rpx; top: 480rpx">
+    <view class="tui-picker-detail">
+      {{learnList[learnIndex]}}</view>
+  </picker>
+
+  <picker bindchange="changeMethod"  
+  value="{{methodIndex}}" 
+  range="{{methodList}}"
+  style="position: relative; left: 376rpx; top: 438rpx">
+    <view class="tui-picker-detail">
+      {{methodList[methodIndex]}}</view>
+  </picker>
+
+
+    <input class="input-detail"  
+    style="position: relative; left: 26rpx; top: 512rpx; width: 602rpx; height: 42rpx; display: block; box-sizing: border-box"
+     placeholder="请在此处输入" 
+    bindinput="userNameInput"/>
+
+    <button class="button" style="position: relative; left: -46rpx; top: 582rpx" bindtap="finishCollection">完成</button>
+ 
+
+
+<view class="subtitle" style="width: 350rpx; height: 130rpx; display: block; box-sizing: border-box; position: relative; left: 300rpx; top: -6rpx">
+<text class= "subtitle"style="position: relative; left: 24rpx; top: 66rpx" style="position: relative; left: -278rpx; top: -496rpx">*国家地区</text>
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: -424rpx">*母语/第一语言</text>
+
+
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: -348rpx">*语种</text>
+
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: -276rpx">*年龄</text>
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: -196rpx">*性别</text>
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: -127rpx">*HSK水平</text>
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: -46rpx">是否为华裔</text>
+
+<text class= "subtitle" style="position: relative; left: 72rpx; top: -94rpx">（如果是）几代华裔</text>
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: 0rpx">是否学过汉语</text>
+
+<text class= "subtitle" style="position: relative; left: 72rpx; top: -32rpx">（如果是）学习方式为</text>
+
+<text class= "subtitle" style="position: relative; left: -278rpx; top: 46rpx">其他语言及学习程度</text>
+
+
+<!-- {{infoMess}} -->
+
+</view>
+<!--<toast class="toast-detail" duration="1000" >  
+        {{infoMess}}  
+</toast>   -->

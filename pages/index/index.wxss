@@ -1,7 +1,5 @@
 /* pages/index/index.wxss */
 
-@import "/custom-tab-bar/index.wxss";
-
 .search {
     z-index: 1;
   }

@@ -1,0 +1,72 @@
+<!--pages/chapter7/chapter7.wxml-->
+<!-- <text>pages/chapter7/chapter7.wxml</text> -->
+<view class="contain">
+
+  <view class="textTitle" style="position: relative; left:0%; top: 30%rpx">
+ {{chapter.name}}
+
+  </view>
+  <view class="swiper" style="position: fixed; left: 76rpx; top: 136rpx">
+    <swiper wx:if="{{current<17}}" indicator-dots="{{false}}" autoplay="{{false}}" current="{{current}}"
+     style="width: 600rpx; height: 954rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"
+     bindchange="swiperchange"
+     >
+     <block wx:for="{{chapter.paragraph_total}}" wx:key="index">
+     <swiper-item>
+     <view class="p-a left-tag font20" style="top:10rpx;left:10rpx">{{index+1}}/{{chapter.paragraph_total}}</view>
+     <view class="text" bindtap="play">{{chapter.paragraph[current]}}
+      <van-icon name="volume-o" />
+    
+    </view>
+    <view>
+     <van-circle
+     style="position: relative; left: 20rpx; top: 20rpx"
+      value="{{ 30 }}"
+       text="完整度"
+       layer-color="#D2CEEC"
+       color="#554D84" 
+       size="50"/>
+       <van-circle
+       style="position: relative; left: 65rpx; top: 20rpx"
+      value="{{ 30 }}"
+       text="流利度"
+       layer-color="#D2CEEC"
+       color="#554D84" 
+       size="50"/>
+       <van-circle
+       style="position: relative; left: 110rpx; top: 20rpx"
+      value="{{ 80 }}"
+       text="准确度"
+       layer-color="#D2CEEC"
+       color="#554D84" 
+       size="50"/>
+       <van-circle
+       style="position: relative; left: 155rpx; top: 20rpx"
+      value="{{ 20 }}"
+       text="音调"
+       layer-color="#D2CEEC"
+       color="#554D84" 
+       size="50"/>
+</view>
+
+<view>
+            <view class="circlebutton" bindlongtap='touchdown'  bindtouchend="touchup" style="position: absolute; left: 32rpx; top: 800rpx;">
+              <text class="circletext" style="position: relative;">{{recod_name}}</text></view>
+        <view class="circlebutton" bindtap="btn_play" style="position: absolute; left: 404rpx; top: 800rpx">
+          <text class="circletext" style="position: relative;">录音回放</text>
+        </view>
+    </view>
+    
+    </swiper-item>   
+
+     
+
+  
+   </block>
+    </swiper>
+  </view>
+<view class="circlebutton；circletext" wx:if="{{current == chapter.paragraph_total-1}}" style="position: fixed; left: 275rpx; top: 1100rpx"
+bindtap="finish">
+ 完成
+</view>
+</view>

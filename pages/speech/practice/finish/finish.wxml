@@ -1,0 +1,24 @@
+<!--pages/chapter7/finish/finish.wxml-->
+<view class="contain">
+
+
+<text class="textBig" style="position: relative; left: 4rpx; top: 191rpx"> 智能评分结果</text>
+
+<text class="textM" style="position: relative; left: -26rpx; top: 226rpx">总分 : {{73}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 256rpx">完整度 : {{20}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 276rpx">流畅度 : {{20}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 296rpx">准确度 : {{10}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 316rpx">音调 : {{23}}</text>
+
+<van-divider style="position:relative; top:320rpx;" />
+
+<button class="button" style="position: absolute; left: 10rpx; top: 768rpx">查看详情</button>
+<button class="button" style="position: absolute; left: 440rpx; top: 768rpx">返回目录</button>
+
+<button class="button" style="position: absolute; left: 179rpx; top: 968rpx; width: 412rpx; height: 80rpx; display: flex; box-sizing: border-box"
+bindtap="finish">返回首页</button>
+</view>

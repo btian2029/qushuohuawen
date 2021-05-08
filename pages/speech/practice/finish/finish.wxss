@@ -1,0 +1,52 @@
+/* pages/chapter7/finish/finish.wxss */
+
+.contain{
+  background-color:#554D84;
+  width: 750rpx; 
+  height:1334rpx ;
+   display: block;
+   box-sizing: border-box;
+}
+
+.textBig{
+  color:white;
+  position:relative;
+  font-size:60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textM{
+  color:#D2CEEC;
+  position:relative;
+  font-size:40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textS{
+  color:#D2CEEC;
+  position:relative;
+  font-size:30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button{
+  background-color:white;
+  color:#554D84;
+  font-size:30rpx;
+  position: absolute;
+  width: 250rpx; 
+  height: 82rpx;
+  display: block;
+   box-sizing: border-box;
+   text-align: center;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}

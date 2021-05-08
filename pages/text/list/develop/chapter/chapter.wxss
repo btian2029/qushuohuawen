@@ -1,0 +1,159 @@
+/* pages/chapter7/chapter7.wxss */
+
+.contain{
+  background-color:#D2CEEC;
+  width: 750rpx; 
+  height:1334rpx ;
+   display: block;
+   box-sizing: border-box;
+}
+
+.swiper{
+  background-color:white;
+  width:300px;
+  height:950rpx;
+  display:block;
+  box-sizing: border-box;
+  position:fixed
+}
+
+
+.textTitle{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size:20px;
+}
+
+.text{
+  border: 1px solid silver;
+  margin: 20rpx;
+  padding: 20rpx;
+  line-height:25px;
+
+  
+}
+
+.box{
+  width: 676rpx;
+   height: 90rpx; 
+   display: block; 
+   box-sizing: border-box;
+   display:flex;
+   justify-content:center;
+   align-items: center;
+   
+}
+
+.icon{
+  position:fixed;
+  
+    color:#554D84;
+  
+}
+
+.button{
+  background-color:#554D84;
+  color:white;
+}
+
+
+.head {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+  border-radius:100%;
+  background-color:#D2CEEC;
+  
+}
+.head ,page{
+  background-color: #f7f7f7;
+}
+.record, .dot {
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-iteration-count: 1;
+}
+ 
+.record {
+  background: rgba(85, 77, 132);
+  z-index: 10;
+}
+ 
+.dot {
+  background: rgba(85, 77, 132, 0.7);
+  z-index: 9;
+}
+ 
+.dot-blowup {
+  animation: sploosh2 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-fill-mode: forwards;
+}
+ 
+.dot-zoomout {
+  animation: sploosh3 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-fill-mode: forwards;
+}
+ 
+@keyframes sploosh2 {
+  0% {
+    box-shadow: 0 0 0 0px rgba(85, 77, 132, 0.7);
+    background:rgba(85, 77, 132, 0.7);
+  }
+ 
+  100% {
+    box-shadow: 0 0 0 15px rgba(85, 77, 132, 0.3);
+    background: rgba(85, 77, 132, 0.3);
+  }
+}
+ 
+@keyframes sploosh3 {
+  0% {
+     box-shadow: 0 0 0 15px rgba(85, 77, 132, 0.3);
+    background: rgba(85, 77, 132, 0.3);
+  }
+ 
+  100%{
+    box-shadow: 0 0 0 0px rgba(85, 77, 132, 0.7);
+    background: rgba(85, 77, 132, 0.7);
+  }
+}
+ 
+.record image {
+  height: 90rpx;
+  width: 90rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  background: transparent;
+  transform: translate(-50%, -50%);
+}
+.circlebutton{
+  background-color:#554D84;
+  height: 200rpx;
+  width: 200rpx;
+  position: absolute;
+  width: 166rpx; 
+  height: 82rpx;
+  display: block;
+   box-sizing: border-box;
+   text-align: center;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.circletext{
+  color:white;
+  position: fixed;
+  
+}
+

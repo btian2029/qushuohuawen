@@ -3,14 +3,15 @@
 //获取应用实例
 const app = getApp()
 var dub_url = "/pages/dub/dub"
-var followUp_url = "/pages/followUp/followUp"
+var text_url = "/pages/text/text"
 var dialogueSimulation_url = "/pages/dialogueSimulation/dialogueSimulation"
-var mockSpeech_url = "/pages/mockSpeech/mockSpeech"
+var speech_url = "/pages/speech/speech"
 Page({
 //index.js  
 //获取应用实例  
   data: {  
     greeting:'',
+    nickName:'',
     Carousel:[
       {url:'/images/Carousel/Carousel_1.png'} ,  
       {url:'/images/Carousel/Carousel_2.png'} ,  
@@ -29,12 +30,12 @@ Page({
 
       {
         id:"3",
-        name:"AI有约——对话模拟",
+        name:"AI有约——人机对话",
       },
 
       {
         id:"4",
-        name:"开讲了——模拟演讲",
+        name:"开讲了——华文演讲",
       }
     ],
     imgheights:[],
@@ -48,6 +49,9 @@ Page({
   },  
   onLoad: function () {
     var that = this;
+    that.setData({
+      nickName:app.globalData.userInfo.nickName
+    })
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
     // console.log("当前时间戳为：" + timestamp);
@@ -150,11 +154,8 @@ Page({
     console.log("switch_funtion")
     var id = e.currentTarget.id
     if (id == "1"){
-      wx.showToast({
-        title: '功能还在开发中',
-        icon: 'loading',
-        duration: 1000,
-        mask: true
+      wx.navigateTo({
+        url: text_url,
       })
     }else if(id == "2"){
       wx.navigateTo({
@@ -165,11 +166,8 @@ Page({
         url: dialogueSimulation_url,
       })
     }else if(id == "4"){
-      wx.showToast({
-        title: '功能还在开发中',
-        icon: 'loading',
-        duration: 1000,
-        mask: true
+      wx.navigateTo({
+        url: speech_url,
       })
     }
 

@@ -1,0 +1,24 @@
+<!--pages/chapter7/finish/finish.wxml-->
+<view class="contain">
+
+<text class="textBig" style="position: relative; left: 4rpx; top: 161rpx">恭喜你 ! ! !</text>
+<text class="textBig" style="position: relative; left: 4rpx; top: 191rpx"> 完成整篇课文的学习</text>
+
+<text class="textM" style="position: relative; left: -26rpx; top: 226rpx">总分 : {{100}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 256rpx">完整度 : {{100}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 276rpx">流畅度 : {{100}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 296rpx">准确度 : {{100}}</text>
+
+<text class="textS" style="position: relative; left: -248rpx; top: 316rpx">音调 : {{100}}</text>
+
+<van-divider style="position:relative; top:320rpx;" />
+
+<button class="button" style="position: absolute; left: 29rpx; top: 768rpx">完整回放</button>
+<button class="button" style="position: absolute; left: 458rpx; top: 768rpx">本地保存</button>
+
+<button class="button" style="position: absolute; left: 179rpx; top: 968rpx; width: 412rpx; height: 80rpx; display: flex; box-sizing: border-box"
+bindtap="finish">查看其他课文</button>
+</view>

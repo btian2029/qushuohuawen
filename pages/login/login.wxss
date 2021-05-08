@@ -13,6 +13,15 @@
 
 }
 
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+
 /*趣说华文轻松学中文*/
 .title{
   color: #978FC8;

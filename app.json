@@ -11,7 +11,18 @@
     "pages/dialogueSimulation/dialogueSimulation",
     "pages/dialogueSimulation/sort/sort",
     "pages/dialogueSimulation/practice/practice",
-    "pages/dialogueSimulation/detail/detail"
+    "pages/dialogueSimulation/detail/detail",
+    "pages/infoCollection/info",
+    "pages/text/text",
+    "pages/text/list/list",
+    "pages/text/list/develop/develop",
+    "pages/text/list/chinese/chinese",
+    "pages/text/list/develop/chapter/chapter",
+    "pages/text/list/develop/chapter/finish/finish",
+    "pages/speech/speech",
+    "pages/speech/practice/practice",
+    "pages/speech/practice/finish/finish",
+    "pages/develop/list/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +32,7 @@
   },
   "plugins": {
     "sdkPlugin": {
-      "version": "3.18.0",
+      "version": "3.20.0",
       "provider": "wxc6b86e382a1e3294"
     }
   },

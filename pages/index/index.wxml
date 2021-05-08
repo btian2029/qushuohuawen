@@ -5,7 +5,7 @@
   <!-- 搜索框 -->
       <view class="card f-r f-a-c boxing w90" style="margin-top:20rpx;margin-bottom:20rpx">
         <view class="box font-purple" style="margin-right:50rpx;font-style:italic">
-          Hi~{{app.globalData.userInfo.nickName}},{{greeting}}~今天过得怎么样
+          Hi~{{nickName}},{{greeting}}~今天过得怎么样
         </view>
         <image src="/images/icon/icon_mail.png" style="height:50rpx;width:50rpx;margin-left:20rpx" bindtap="onshow"></image>
         <!-- <view class="boxing block ml20 mb20 mr20 f-r">

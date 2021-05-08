@@ -1,0 +1,20 @@
+<van-tabs active="0" bind:change="onChange" color="#554D84">
+  
+  <van-tab title="生活" name="0">
+   <block wx:for= "{{list}}"wx:for-item="item" wx:key="index">
+    <view class="box" bindtap='practice' id='{{index}}' style="position: relative; left: 18rpx; top: 20rpx">
+      <text class="topic">{{index+1}}.{{item.topic}}</text>
+      <button class="blockText" style="position: relative; left: 240rpx; top: 22rpx; width: 180rpx; height: 40rpx; display: flex; box-sizing: border-box">讲一讲</button>
+      <view class="block">
+        <text class="blockText">{{item.description}}</text>
+      </view>
+    </view>
+    
+</block>
+
+  </van-tab>
+
+  <van-tab title="学习"></van-tab>
+  <van-tab title="工作"></van-tab>
+ 
+</van-tabs>

@@ -1,0 +1,52 @@
+/* pages/part1_text/text.wxss */
+.container{
+ 
+  flex-direction: column;
+  align-items: center;
+  /* position:relative; */
+  width: 752rpx; 
+  height: 1300rpx; 
+  display: flex;
+  box-sizing: border-box;
+  background:#F2F0FB;
+  position: fixed;
+}
+
+.container2{
+
+  background:white;
+  position: fixed;
+  top:91rpx
+}
+
+.button{
+ 
+  background:#554D84;
+  
+}
+
+.text{
+  color:white;
+  position:relative;
+  left: 0%;
+  top:15%;
+  font-size: 200%
+}
+
+.textTitle{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size:25px;
+  top:20rpx;
+  background-color:#554D84;
+  color:white;
+} 
+.text2{
+  position:abusolute;
+  left: 42%;
+  top:30%;
+  color:#554D84;
+}

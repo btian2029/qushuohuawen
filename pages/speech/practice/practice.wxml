@@ -1,0 +1,23 @@
+<!--pages/speech/practice/practice.wxml-->
+<text class='textTitle' style="position: relative; left: 6rpx; top: 68rpx">{{dataList.topic}}</text>
+<view class="contain" style="position: relative; left: 85rpx; top: 88rpx">
+  <text class="text">{{dataList.description}}</text>
+  
+<view wx:if="{{!tip}}">
+  <button bindtap="showTips" class="tipButton" style="width: 280rpx; height: 64rpx; display: block; box-sizing: border-box; position: relative; left: -120rpx; top: 388rpx">
+
+  点击查看提示词</button>
+</view>
+<view wx:else>
+  <button bindtap="showTips" class="tipButton" style="width: 280rpx; height: 64rpx; display: block; box-sizing: border-box; position: relative; left: -120rpx; top: 388rpx">
+
+点击收起提示词</button>
+  <text wx:if="{{tip}}" class="tipText">{{dataList.tips}}</text>
+
+</view>
+</view>
+<button bindtap="start" class="button" style="width: 162rpx; height: 62rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: 124rpx">开始</button>
+<button bindtap="stop" class="button" style="width: 162rpx; height: 62rpx; display: block; box-sizing: border-box; position: relative; left: -239rpx; top: 62rpx">停止</button>
+<button bindtap="play" class="button" style="width: 162rpx; height: 62rpx; display: block; box-sizing: border-box; position: relative; left: 244rpx; top: 0rpx">回放</button>
+
+<button class="button" bindtap="finish" style="position: relative; left: 0rpx; top: 140rpx; width: 368rpx; height: 62rpx; display: block; box-sizing: border-box">查看评测</button>
